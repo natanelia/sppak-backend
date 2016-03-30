@@ -33,8 +33,7 @@ class CreateKelahiranTable extends Migration
             $table->boolean('verifikasiLurah')->default(false);
             $table->boolean('verifikasiAdmin')->default(false);
             $table->timestamp('waktuCetakTerakhir')->default('0000-00-00 00:00:00');
-            $table->timestamp('waktuBuat')->default(new Expression('CURRENT_TIMESTAMP'));
-            $table->timestamp('waktuUpdate')->default(new Expression('CURRENT_TIMESTAMP'));
+            $table->timestamps();
 
             $table->unique('anakId');
             $table->foreign('anakId')->references('id')->on('anak')->onDelete('restrict');

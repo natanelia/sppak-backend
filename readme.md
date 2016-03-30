@@ -5,9 +5,10 @@ SPPAK stands for "Sistem Pencatatan dan Pembuatan Akta Kelahiran".
 This is not real system and is build for course completion only.
 
 ## Installation
-- Follow installation steps from [Laravel Installation Instruction](https://laravel.com/docs/5.2/installation)
-- Import MySQL database `db_ppl_core'`
-- Run `php artisan migrate`
+- Follow installation steps from [Laravel Installation Instructions](https://laravel.com/docs/5.2/installation).
+- Import MySQL database `db_ppl_core`.
+- Create new MySQL database named `sppak`.
+- Run `php artisan migrate`.
 
 ## Technology Stack
 This project is built with:

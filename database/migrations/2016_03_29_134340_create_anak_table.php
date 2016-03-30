@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -15,9 +16,9 @@ class CreateAnakTable extends Migration
         Schema::create('anak', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama');
-            $table->enum('jenisKelamin', ['pria', 'wanita']);
-            $table->string('tempatLahir');
-            $table->dateTime('waktuLahir');
+            $table->enum('jenisKelamin', ['laki-laki', 'perempuan'])->default('laki-laki');
+            $table->integer('kotaLahirId');
+            $table->date('tanggalLahir');
             $table->string('jenisLahir');
             $table->integer('anakKe');
             $table->string('penolongKelahiran');
@@ -25,6 +26,7 @@ class CreateAnakTable extends Migration
             $table->integer('panjang');
 
             $table->index('nama');
+            $table->foreign('kotaLahirId')->references('id')->on(new Expression('db_ppl_core.kota'))->onDelete('restrict');
         });
     }
 

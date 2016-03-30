@@ -16,8 +16,7 @@ class CreateAdminTable extends Migration
         Schema::create('admin', function (Blueprint $table) {
             $table->unsignedBigInteger('penggunaId');
             $table->string('pegawaiId', 20);
-            $table->timestamp('waktuBuat')->default(new Expression('CURRENT_TIMESTAMP'));
-            $table->timestamp('waktuUpdate')->default(new Expression('CURRENT_TIMESTAMP'));
+            $table->timestamps();
 
             $table->unique('penggunaId');
             $table->unique('pegawaiId');

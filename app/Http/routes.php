@@ -12,15 +12,17 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
-    Route::get('/', function () {
+    Route::get('/', function() {
         return view('welcome');
     });
+});
 
-    Route::post('/anak', function (Request $request) {
-        //
+Route::group(['prefix' => 'api/v1'], function () {
+    Route::get('/', function() {
+        return response()->json(['error' => 'URL tidak ditemukan'], 404);
     });
 
-    Route::post('/anak/{anak}', function (Anak $anak) {
-       //
-    });
+    Route::resource('anak', 'AnakController', [
+        'only' => ['index', 'show', 'create', 'store', 'update', 'destroy']
+    ]);
 });

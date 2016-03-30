@@ -20,8 +20,7 @@ class CreatePenggunaTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamp('waktuBuat')->default(new Expression('CURRENT_TIMESTAMP'));
-            $table->timestamp('waktuUpdate')->default(new Expression('CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 

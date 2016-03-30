@@ -17,8 +17,7 @@ class CreateSaksiTable extends Migration
             $table->bigIncrements('id');
             $table->string('pendudukId', 16);
             $table->string('token');
-            $table->timestamp('waktuBuat')->default(new Expression('CURRENT_TIMESTAMP'));
-            $table->timestamp('waktuUpdate')->default(new Expression('CURRENT_TIMESTAMP'));
+            $table->timestamps();
 
             $table->foreign('pendudukId')->references('id')->on(new Expression('db_ppl_core.penduduk'))->onDelete('restrict');
             $table->index('token');

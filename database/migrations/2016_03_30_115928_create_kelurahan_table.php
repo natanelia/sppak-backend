@@ -16,8 +16,7 @@ class CreateKelurahanTable extends Migration
         Schema::create('kelurahan', function (Blueprint $table) {
             $table->unsignedBigInteger('penggunaId');
             $table->integer('kelurahanId');
-            $table->timestamp('waktuBuat')->default(new Expression('CURRENT_TIMESTAMP'));
-            $table->timestamp('waktuUpdate')->default(new Expression('CURRENT_TIMESTAMP'));
+            $table->timestamps();
 
             $table->unique('penggunaId');
             $table->unique('kelurahanId');

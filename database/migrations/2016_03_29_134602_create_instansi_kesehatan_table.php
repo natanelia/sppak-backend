@@ -20,8 +20,7 @@ class CreateInstansiKesehatanTable extends Migration
             $table->enum('jenis', ['rumahSakit', 'klinik']);
             $table->string('alamat');
             $table->integer('kotaId');
-            $table->timestamp('waktuBuat')->default(new Expression('CURRENT_TIMESTAMP'));
-            $table->timestamp('waktuUpdate')->default(new Expression('CURRENT_TIMESTAMP'));
+            $table->timestamps();
 
             $table->index('nama');
             $table->unique('penggunaId');
