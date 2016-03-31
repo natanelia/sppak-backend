@@ -16,6 +16,7 @@ class CreateSaksiTable extends Migration
         Schema::create('saksi', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('pendudukId', 16);
+            $table->string('email');
             $table->string('token');
             $table->timestamps();
 

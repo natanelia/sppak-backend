@@ -22,11 +22,9 @@ class CreateKelahiranTable extends Migration
             $table->string('aktaNikahId');
             $table->string('ibuId', 16);
             $table->string('ayahId', 16);
-            $table->string('saksiSatuId', 16);
-            $table->string('saksiDuaId', 16);
+            $table->unsignedBigInteger('saksiSatuId');
+            $table->unsignedBigInteger('saksiDuaId');
             $table->string('pemohonId', 16);
-            $table->string('emailSaksiSatu');
-            $table->string('emailSaksiDua');
             $table->boolean('verifikasiSaksi1')->default(false);
             $table->boolean('verifikasiSaksi2')->default(false);
             $table->boolean('verifikasiInstansiKelahiran')->default(false);
@@ -43,8 +41,8 @@ class CreateKelahiranTable extends Migration
             // $table->foreign('aktaNikahId')->references('id')->on(new Expression('sppan.aktaNikah')->onDelete('restrict');
             $table->foreign('ibuId')->references('id')->on(new Expression('db_ppl_core.penduduk'))->onDelete('restrict');
             $table->foreign('ayahId')->references('id')->on(new Expression('db_ppl_core.penduduk'))->onDelete('restrict');
-            $table->foreign('saksiSatuId')->references('id')->on(new Expression('db_ppl_core.penduduk'))->onDelete('restrict');
-            $table->foreign('saksiDuaId')->references('id')->on(new Expression('db_ppl_core.penduduk'))->onDelete('restrict');
+            $table->foreign('saksiSatuId')->references('id')->on('saksi')->onDelete('restrict');
+            $table->foreign('saksiDuaId')->references('id')->on('saksi')->onDelete('restrict');
             $table->foreign('pemohonId')->references('id')->on(new Expression('db_ppl_core.penduduk'))->onDelete('restrict');
         });
     }
