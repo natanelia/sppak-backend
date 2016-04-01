@@ -8,6 +8,10 @@ This is not real system and is build for course completion only.
 - Follow installation steps from [Laravel Installation Instructions](https://laravel.com/docs/5.2/installation).
 - Import MySQL database `db_ppl_core`.
 - Create new MySQL database named `sppak`.
+- Rename .env.example to .env. 
+- Configure DB_HOST, DB_DATABASE=sppak, DB_USERNAME, DB_PASSWORD.
+- Run `php artisan key:generate`
+- Run `composer install`.
 - Run `php artisan migrate`.
 
 ## Technology Stack
