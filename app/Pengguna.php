@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Pengguna extends Authenticatable
 {
+    protected $table = 'pengguna';
     /**
      * The attributes that are mass assignable.
      *
@@ -23,4 +24,24 @@ class Pengguna extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    public function getReminderEmail()
+    {
+        return $this->email;
+    }
+
+    public function userable()
+    {
+        return $this->morphTo();
+    }
 }

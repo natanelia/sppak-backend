@@ -202,6 +202,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'MorphPengguna' => App\Pengguna::class,
+        'MorphPenduduk' => 'App\Penduduk',
+        'MorphPegawai' => 'App\Pegawai',
+        'MorphKelurahan' => 'App\Kelurahan',
+        'App\User' => 'App\Pengguna',
     ],
 
 ];

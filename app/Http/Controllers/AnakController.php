@@ -87,12 +87,12 @@ class AnakController extends Controller
                 'nama' => 'required|max:255',
                 'jenisKelamin' => 'required|in:laki-laki,perempuan',
                 'kotaLahirId' => 'required',
-                'tanggalLahir' => 'required',
-                'jenisLahir' => 'required',
-                'anakKe' => 'required',
-                'penolongKelahiran' => 'required',
-                'berat' => 'required',
-                'panjang' => 'required',
+                'tanggalLahir' => '',
+                'jenisLahir' => '',
+                'anakKe' => '',
+                'penolongKelahiran' => '',
+                'berat' => '',
+                'panjang' => '',
             ]);
 
             if ($validator->fails()) throw new Exception(implode(" ", $validator->getMessageBag()->all()));

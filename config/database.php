@@ -66,13 +66,13 @@ return [
             'engine' => 'InnoDB',
         ],
 
-        'kependudukan_mysql' => [
+        'db_ppl_core' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'kependudukan'),
-            'username' => env('DB_USERNAME', 'sppak'),
-            'password' => env('DB_PASSWORD', 'rahasia'),
+            'host' => env('CORE_DB_HOST', 'localhost'),
+            'port' => env('CORE_DB_PORT', '3306'),
+            'database' => env('CORE_DB_DATABASE', 'db_ppl_core'),
+            'username' => env('CORE_DB_USERNAME', 'sppak'),
+            'password' => env('CORE_DB_PASSWORD', 'rahasia'),
             'charset' => 'latin1',
             'collation' => 'latin1_swedish_ci',
             'prefix' => '',

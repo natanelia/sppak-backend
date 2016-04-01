@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Anak;
 
-class EloquentAnakRepository implements AnakRepository
+class EloquentAnakRepository implements Repository
 {
     public function all()
     {
@@ -20,10 +20,5 @@ class EloquentAnakRepository implements AnakRepository
     {
         return Anak::create($input);
     }
-
-    public function save($input)
-    {
-        $anak = new Anak($input);
-        return $anak->save();
-    }
+    
 }

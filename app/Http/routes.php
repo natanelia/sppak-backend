@@ -25,4 +25,8 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::resource('anak', 'AnakController', [
         'only' => ['index', 'show', 'create', 'store', 'update', 'destroy']
     ]);
+
+    Route::resource('pengguna', 'PenggunaController');
+
+    Route::resource('penduduk', 'PendudukController');
 });
