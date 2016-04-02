@@ -28,7 +28,11 @@ class AnakController extends Controller
                 'data' => []
             ];
 
-            $anaks = $this->anak->all()->take(10);
+
+            $limit = $request->input('limit') ? $request->input('limit') : 10;
+            $start = $request->input('start') ? $request->input('start') : 0;
+
+            $anaks = \App\Anak::limit($limit)->skip($start)->get();
 
             foreach ($anaks as $anak) {
                 $response['data'][] = [

@@ -22,7 +22,7 @@ class AuthenticateOnceWithBasicAuth
      */
     public function handle($request, Closure $next)
     {
-        return Auth::onceBasic() ?: $next($request);
+        return Auth::onceBasic() ? response()->json(['error' => 'Anda tidak memiliki otorisasi untuk menampilkan aset.'], 401) : $next($request);
     }
 
 }

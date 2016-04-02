@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Penduduk as Penduduk;
 use App\Repositories\EloquentPenggunaRepository as Pengguna;
 use Exception;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Hash;
 
 class PenggunaController extends Controller
 {
@@ -16,156 +16,79 @@ class PenggunaController extends Controller
     public function __construct(Pengguna $pengguna)
     {
         $this->pengguna = $pengguna;
-
-        // $this->middleware('auth');
-        // $this->middleware('log');
+        $this->middleware('auth.basic.once', ['only' => ['index', 'show']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        try {
-            $statusCode = 200;
-            $response = [
-                'data' => []
-            ];
+        if ($request->user() && $request->user()['userable_type'] === 'MorphAdmin') {
+          $limit = $request->input('limit') ? $request->input('limit') : 10;
+          $start = $request->input('start') ? $request->input('start') : 0;
+          try {
+                $statusCode = 200;
+                $response = [
+                    'data' => []
+                ];
 
-            $penggunas = $this->pengguna->all()->take(10);
+                $penggunas = \App\Pengguna::limit($limit)->offset($start)->get();
 
-            foreach ($penggunas as $pengguna) {
-                $pengguna->userable;
-                $response['data'][] = $pengguna;
+                foreach ($penggunas as $pengguna) {
+                    $pengguna->pengguna;
+                    $response['data'][] = $pengguna;
+                }
+
+            } catch (Exception $e) {
+                $statusCode = 400;
+                $response = [];
+            } finally {
+                return response()->json($response, $statusCode);
             }
-
-        } catch (Exception $e) {
-            $statusCode = 400;
-            $response = [];
-        } finally {
-            return response()->json($response, $statusCode);
+        } else {
+            return response()->json(['error' => 'Anda tidak memiliki otorisasi untuk menampilkan daftar penduduk.'], 401);
         }
     }
 
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        try {
-            $pengguna = $this->pengguna->find($id);
-            $statusCode = 200;
-            $response = [
-                'data' => [
-                    'id' => $pengguna->id,
-                    'nama' => $pengguna->nama,
-                    'jenisKelamin' => $pengguna->jenisKelamin,
-                    'kotaLahirId' => $pengguna->kotaLahirId,
-                    'tanggalLahir' => $pengguna->tanggalLahir,
-                    'jenisLahir' => $pengguna->jenisLahir,
-                    'penolongKelahiran' => $pengguna->penolongKelahiran,
-                    'berat' => $pengguna->berat,
-                    'panjang' => $pengguna->panjang,
-                ],
-            ];
-        } catch (Exception $e) {
-            $response = [
-                'error' => 'Pengguna tidak ditemukan.',
-            ];
-            $statusCode = 404;
-        } finally {
-            return response()->json($response, $statusCode);
+        $user = $request->user();
+        if ($user) {
+          try {
+              $statusCode = 200;
+              $response = [
+                  'data' => []
+              ];
+
+              $isAuthorized = false;
+              $pengguna = $this->pengguna->find($id);
+
+              if ($pengguna === null) throw new Exception("Pengguna dengan id = $id tidak ditemukan.");
+
+              $userType = $pengguna['userable_type'];
+              if ($userType !== 'MorphPegawai') {
+                if ($user['id'] == $id) {
+                    $isAuthorized = true;
+                }
+              } else {
+                  $isAuthorized = true;
+              }
+
+              if ($isAuthorized) {
+                  $pengguna->userable;
+                  $response['data'][] = $pengguna;
+              } else {
+                  $response = ['error' => "Anda tidak memiliki otorisasi untuk menampilkan penduduk dengan id = $id"];
+                  $statusCode = 401;
+              }
+          } catch (Exception $e) {
+              $statusCode = 400;
+              $response = [
+                  'error' => $e->getMessage(),
+              ];
+          } finally {
+              return response()->json($response, $statusCode);
+          }
+        } else {
+          return response()->json(['error' => "Anda tidak memiliki otorisasi untuk menampilkan penduduk dengan id = $id"], 401);
         }
-    }
-
-    public function store(Request $request)
-    {
-        try {
-            $validator = validator()->make($request->all(), [
-                'nama' => 'required|max:255',
-                'jenisKelamin' => 'required|in:laki-laki,perempuan',
-                'kotaLahirId' => 'required',
-                'tanggalLahir' => '',
-                'jenisLahir' => '',
-                'penggunaKe' => '',
-                'penolongKelahiran' => '',
-                'berat' => '',
-                'panjang' => '',
-            ]);
-
-            if ($validator->fails()) throw new Exception(implode(" ", $validator->getMessageBag()->all()));
-
-            $this->pengguna->create($request->all());
-
-            $statusCode = 200;
-            $response = [
-                'message' => 'Berhasil membuat data pengguna.',
-            ];
-        } catch (Exception $e) {
-            $response = [
-                'error' => 'Gagal membuat data pengguna.',
-                'message' => $e->getMessage(),
-            ];
-            $statusCode = 400;
-        } finally {
-            return response()->json($response, $statusCode);
-        }
-    }
-
-    public function update(Request $request, $id) {
-        try {
-            $pengguna = $this->pengguna->find($id);
-            if (!$pengguna) throw new Exception("No pengguna found with id=$id.");
-
-            $pengguna['nama'] = (array_key_exists('nama', $request->all())) ? ($request->all()['nama']) : $pengguna['nama'];
-            $pengguna['jenisKelamin'] = (array_key_exists('jenisKelamin', $request->all())) ? ($request->all()['jenisKelamin']) : $pengguna['jenisKelamin'];
-            $pengguna['kotaLahirId'] = (array_key_exists('kotaLahirId', $request->all()))  ? ($request->all()['kotaLahirId']) : $pengguna['kotaLahirId'];
-            $pengguna['tanggalLahir'] = (array_key_exists('tanggalLahir', $request->all())) ? ($request->all()['tanggalLahir']) : $pengguna['tanggalLahir'];
-            $pengguna['jenisLahir'] = (array_key_exists('jenisLahir', $request->all()))  ? ($request->all()['jenisLahir']) : $pengguna['jenisLahir'];
-            $pengguna['penggunaKe'] = (array_key_exists('penggunaKe', $request->all()))  ? ($request->all()['penggunaKe']) : $pengguna['penggunaKe'];
-            $pengguna['penolongKelahiran'] = (array_key_exists('penolongKelahiran', $request->all())) ? ($request->all()['penolongKelahiran']) : $pengguna['penolongKelahiran'];
-            $pengguna['berat'] = (array_key_exists('berat', $request->all()))  ? ($request->all()['berat']) : $pengguna['berat'];
-            $pengguna['panjang'] = (array_key_exists('panjang', $request->all()) ) ? ($request->all()['panjang']) : $pengguna['panjang'];
-            $pengguna->save();
-
-            $statusCode = 200;
-            $response = [
-                'message' => 'Berhasil menyimpan data pengguna.',
-            ];
-        } catch (Exception $e) {
-            $response = [
-                'error' => 'Gagal menyimpan data pengguna.',
-                'message' => $e->getMessage(),
-            ];
-            $statusCode = 400;
-        } finally {
-            return response()->json($response, $statusCode);
-        }
-    }
-
-    public function destroy(Request $request, $id)
-    {
-        try {
-            $pengguna = $this->pengguna->find($id);
-            if (!$pengguna) throw new Exception("No pengguna found with id=$id.");
-
-            $pengguna->delete();
-
-            $statusCode = 200;
-            $response = [
-                'message' => 'Berhasil menghapus data pengguna.',
-            ];
-        } catch (Exception $e) {
-            $response = [
-                'error' => 'Gagal menghapus data pengguna.',
-                'message' => $e->getMessage(),
-            ];
-            $statusCode = 400;
-        } finally {
-            return response()->json($response, $statusCode);
-        }
-    }
-
-    public function missingMethod($parameters = array())
-    {
-        $statusCode = 404;
-        $response = [
-            'error' => 'URL tidak ditemukan.',
-        ];
-        return response()->json($response, $statusCode);
     }
 }

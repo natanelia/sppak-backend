@@ -11,6 +11,11 @@ class EloquentPendudukRepository implements Repository
         return Penduduk::all();
     }
 
+    public function get($start, $limit)
+    {
+      return Penduduk::limit($limit)->skip($start)->get();
+    }
+
     public function find($id)
     {
         return Penduduk::find($id);
