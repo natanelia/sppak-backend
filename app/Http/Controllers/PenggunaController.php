@@ -91,4 +91,35 @@ class PenggunaController extends Controller
           return response()->json(['error' => "Anda tidak memiliki otorisasi untuk menampilkan penduduk dengan id = $id"], 401);
         }
     }
+
+    public function store(Request $request)
+    {
+        try {
+            $validator = validator()->make($request->all(), [
+                'email' => 'required|max:255',
+                'password' => 'required|min:6',
+                'userable_id' => 'required',
+                'userable_type' => 'required|in:MorphPenduduk,MorphKelurahan,MorphInstansiKesehatan,MorphPegawai',
+            ]);
+
+            if ($validator->fails()) throw new Exception(implode(" ", $validator->getMessageBag()->all()));
+
+            $dataPengguna = $request->all();
+            $dataPengguna['password'] = Hash::make($dataPengguna['password']);
+            $this->pengguna->create($dataPengguna);
+
+            $statusCode = 200;
+            $response = [
+                'message' => 'Berhasil membuat data pengguna.',
+            ];
+        } catch (Exception $e) {
+            $response = [
+                'error' => 'Gagal membuat data pengguna.',
+                'message' => $e->getMessage(),
+            ];
+            $statusCode = 400;
+        } finally {
+            return response()->json($response, $statusCode);
+        }
+    }
 }

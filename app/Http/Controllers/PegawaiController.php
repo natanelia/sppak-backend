@@ -7,7 +7,6 @@ use Exception;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Hash;
 
 class PegawaiController extends Controller
 {
