@@ -20,15 +20,16 @@ class PendudukController extends Controller
 
     public function index(Request $request)
     {
-        die ($request->user());
         if ($request->user()) {
-            try {
+          $limit = $request->input('limit') ? $request->input('limit') : 10;
+          $start = $request->input('start') ? $request->input('start') : 0;
+          try {
                 $statusCode = 200;
                 $response = [
                     'data' => []
                 ];
 
-                $penduduks = $this->penduduk->all()->take(10);
+                $penduduks = $this->penduduk->all()->take($limit);
 
                 foreach ($penduduks as $penduduk) {
                     $penduduk->pengguna;
