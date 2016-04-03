@@ -113,7 +113,7 @@ class KelahiranController extends Controller
                 'anak.jenisKelamin' => 'required|in:laki-laki,perempuan',
                 'anak.kotaLahirId' => 'required|numeric',
                 'anak.waktuLahir' => 'date',
-                'anak.jenisLahir' => 'alpha_num',
+                'anak.jenisLahir' => 'string',
                 'anak.anakKe' => 'numeric',
                 'anak.penolongKelahiran' => 'alpha',
                 'anak.berat' => 'numeric',
@@ -142,7 +142,7 @@ class KelahiranController extends Controller
                 unset($kelahiranData['verifikasiAdmin']);
                 unset($kelahiranData['waktuCetakTerakhir']);
 
-                if ($kelahiranData['status'] > 1) { // !== 2
+                if (isset($kelahiranData['status']) && $kelahiranData['status'] > 1) { // !== 2
                     unset($kelahiranData['status']);
                 }
             } else if ($user['userable_type'] === 'MorphKelurahan') {
@@ -180,7 +180,7 @@ class KelahiranController extends Controller
                             'jenisKelamin' => 'required|in:laki-laki,perempuan',
                             'kotaLahirId' => 'required|numeric',
                             'waktuLahir' => 'required|date',
-                            'jenisLahir' => 'required|alpha_num',
+                            'jenisLahir' => 'required|string',
                             'anakKe' => 'required|numeric',
                             'penolongKelahiran' => 'required|alpha',
                             'berat' => 'required|numeric',
@@ -248,7 +248,7 @@ class KelahiranController extends Controller
                 'anak.jenisKelamin' => 'in:laki-laki,perempuan',
                 'anak.kotaLahirId' => 'numeric',
                 'anak.waktuLahir' => 'date',
-                'anak.jenisLahir' => 'alpha_num',
+                'anak.jenisLahir' => 'string',
                 'anak.anakKe' => 'numeric',
                 'anak.penolongKelahiran' => 'alpha',
                 'anak.berat' => 'numeric',
@@ -282,7 +282,7 @@ class KelahiranController extends Controller
                     unset($kelahiranData['verifikasiAdmin']);
                     unset($kelahiranData['waktuCetakTerakhir']);
 
-                    if ($kelahiranData['status'] > 1) { // !== 2
+                    if (isset($kelahiranData['status']) && $kelahiranData['status'] > 1) { // !== 2
                         unset($kelahiranData['status']);
                     }
 
@@ -356,7 +356,7 @@ class KelahiranController extends Controller
                         'jenisKelamin' => 'required|in:laki-laki,perempuan',
                         'kotaLahirId' => 'required|numeric',
                         'waktuLahir' => 'required|date',
-                        'jenisLahir' => 'required|alpha_num',
+                        'jenisLahir' => 'required|string',
                         'anakKe' => 'required|numeric',
                         'penolongKelahiran' => 'required|alpha',
                         'berat' => 'required|numeric',

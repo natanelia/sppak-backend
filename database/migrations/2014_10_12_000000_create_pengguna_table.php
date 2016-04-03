@@ -16,7 +16,7 @@ class CreatePenggunaTable extends Migration
         Schema::create('pengguna', function (Blueprint $table) {
             $table->bigIncrements('id');
             // $table->string('name');
-            $table->string('email')->index();
+            $table->string('email')->unique();
             $table->string('password');
             $table->integer('userable_id');
             $table->enum('userable_type', ['Penduduk', 'Kelurahan', 'InstansiKesehatan', 'Pegawai']);

@@ -22,9 +22,9 @@ class PenggunaController extends Controller
     public function index(Request $request)
     {
         if ($request->user() && $request->user()['userable_type'] === 'MorphAdmin') {
-          $limit = $request->input('limit') ? $request->input('limit') : 10;
-          $start = $request->input('start') ? $request->input('start') : 0;
-          try {
+            $limit = $request->input('limit') ? $request->input('limit') : 10;
+            $start = $request->input('start') ? $request->input('start') : 0;
+            try {
                 $statusCode = 200;
                 $response = [
                     'data' => []
@@ -44,7 +44,7 @@ class PenggunaController extends Controller
                 return response()->json($response, $statusCode);
             }
         } else {
-            return response()->json(['error' => 'Anda tidak memiliki otorisasi untuk menampilkan daftar penduduk.'], 401);
+            return response()->json(['error' => 'Anda tidak memiliki otorisasi untuk menampilkan daftar pengguna.'], 401);
         }
     }
 
@@ -52,43 +52,42 @@ class PenggunaController extends Controller
     {
         $user = $request->user();
         if ($user) {
-          try {
-              $statusCode = 200;
-              $response = [
-                  'data' => []
-              ];
+            try {
+                $statusCode = 200;
 
-              $isAuthorized = false;
-              $pengguna = $this->pengguna->find($id);
+                $isAuthorized = false;
+                $pengguna = $this->pengguna->find($id);
 
-              if ($pengguna === null) throw new Exception("Pengguna dengan id = $id tidak ditemukan.");
+                if ($pengguna === null) throw new Exception("Pengguna dengan id = $id tidak ditemukan.");
 
-              $userType = $pengguna['userable_type'];
-              if ($userType !== 'MorphPegawai') {
-                if ($user['id'] == $id) {
+                $userType = $pengguna['userable_type'];
+                if ($userType !== 'MorphPegawai') {
+                    if ($user['id'] == $id) {
+                        $isAuthorized = true;
+                    }
+                } else {
                     $isAuthorized = true;
                 }
-              } else {
-                  $isAuthorized = true;
-              }
 
-              if ($isAuthorized) {
-                  $pengguna->userable;
-                  $response['data'][] = $pengguna;
-              } else {
-                  $response = ['error' => "Anda tidak memiliki otorisasi untuk menampilkan penduduk dengan id = $id"];
-                  $statusCode = 401;
-              }
-          } catch (Exception $e) {
-              $statusCode = 400;
-              $response = [
-                  'error' => $e->getMessage(),
-              ];
-          } finally {
-              return response()->json($response, $statusCode);
-          }
+                if ($isAuthorized) {
+                    $pengguna->userable;
+                    $response = [
+                        'data' => $pengguna,
+                    ];
+                } else {
+                    $response = ['error' => "Anda tidak memiliki otorisasi untuk menampilkan pengguna dengan id = $id"];
+                    $statusCode = 401;
+                }
+            } catch (Exception $e) {
+                $statusCode = 400;
+                $response = [
+                    'error' => $e->getMessage(),
+                ];
+            } finally {
+                return response()->json($response, $statusCode);
+            }
         } else {
-          return response()->json(['error' => "Anda tidak memiliki otorisasi untuk menampilkan penduduk dengan id = $id"], 401);
+            return response()->json(['error' => "Anda tidak memiliki otorisasi untuk menampilkan pengguna dengan id = $id"], 401);
         }
     }
 

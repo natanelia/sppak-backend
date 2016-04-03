@@ -21,30 +21,31 @@ class PendudukController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->user() && $request->user()['userable_type'] === 'MorphPegawai') {
-          $limit = $request->input('limit') ? $request->input('limit') : 10;
-          $start = $request->input('start') ? $request->input('start') : 0;
-          try {
-                $statusCode = 200;
-                $response = [
-                    'data' => []
-                ];
+        $limit = $request->input('limit') ? $request->input('limit') : 10;
+        $start = $request->input('start') ? $request->input('start') : 0;
+        try {
+            $statusCode = 200;
+            $response = [
+                'data' => []
+            ];
 
-                $penduduks = \App\Penduduk::limit($limit)->offset($start)->get();
+            $penduduks = \App\Penduduk::limit($limit)->offset($start)->get();
 
-                foreach ($penduduks as $penduduk) {
+            foreach ($penduduks as $penduduk) {
+                if ($request->user()['userable_type'] === 'MorphPegawai'
+                    || ($request->user()['userable_type'] === 'MorphPenduduk' && $request->user()['userable_id'] == $penduduk['id'])
+                ) {
+
                     $penduduk->pengguna;
-                    $response['data'][] = $penduduk;
                 }
 
-            } catch (Exception $e) {
-                $statusCode = 400;
-                $response = [];
-            } finally {
-                return response()->json($response, $statusCode);
+                $response['data'][] = $penduduk;
             }
-        } else {
-            return response()->json(['error' => 'Anda tidak memiliki otorisasi untuk menampilkan daftar penduduk.'], 401);
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $response = [];
+        } finally {
+            return response()->json($response, $statusCode);
         }
     }
 
@@ -53,35 +54,30 @@ class PendudukController extends Controller
         $user = $request->user();
         $isAuthorized = false;
         if ($user) {
-          if ($user['userable_type'] === 'MorphPenduduk') {
-            if ($user['userable_id'] == $id) {
-              $isAuthorized = true;
+            if ($user['userable_type'] === 'MorphPenduduk') {
+                if ($user['userable_id'] == $id) {
+                    $isAuthorized = true;
+                }
+            } else {
+                $isAuthorized = true;
             }
-          } else {
-            $isAuthorized = true;
-          }
         }
 
-        if ($isAuthorized) {
-          try {
-              $statusCode = 200;
-              $response = [
-                  'data' => []
-              ];
+        try {
+            $statusCode = 200;
 
-              $penduduk = $this->penduduk->find($id);
+            $penduduk = $this->penduduk->find($id);
 
-              $penduduk->pengguna;
-              $response['data'][] = $penduduk;
+            if ($isAuthorized) $penduduk->pengguna;
+            $response = [
+                'data' => $penduduk,
+            ];
 
-          } catch (Exception $e) {
-              $statusCode = 400;
-              $response = [];
-          } finally {
-              return response()->json($response, $statusCode);
-          }
-        } else {
-          return response()->json(['error' => "Anda tidak memiliki otorisasi untuk menampilkan penduduk dengan id = $id"], 401);
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $response = [];
+        } finally {
+            return response()->json($response, $statusCode);
         }
     }
 }
