@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\EloquentPendudukRepository as Penduduk;
+use Exception;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;

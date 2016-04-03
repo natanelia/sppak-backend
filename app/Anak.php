@@ -26,4 +26,8 @@ class Anak extends Model
         'berat',
         'panjang'
     ];
+
+    public function kelahiran() {
+        return $this->hasOne(\App\Kelahiran::class, 'anakId');
+    }
 }

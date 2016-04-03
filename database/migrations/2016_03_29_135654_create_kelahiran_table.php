@@ -16,21 +16,22 @@ class CreateKelahiranTable extends Migration
         Schema::create('kelahiran', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('anakId');
-            $table->integer('kelurahanId');
-            $table->unsignedBigInteger('instansiKesehatanId');
-            $table->string('kartuKeluargaId', 16);
-            $table->string('aktaNikahId');
-            $table->string('ibuId', 16);
-            $table->string('ayahId', 16);
-            $table->unsignedBigInteger('saksiSatuId');
-            $table->unsignedBigInteger('saksiDuaId');
+            $table->integer('kelurahanId')->nullable();
+            $table->unsignedBigInteger('instansiKesehatanId')->nullable();
+            $table->string('kartuKeluargaId', 16)->nullable();
+            $table->string('aktaNikahId')->nullable();
+            $table->string('ibuId', 16)->nullable();
+            $table->string('ayahId', 16)->nullable();
+            $table->unsignedBigInteger('saksiSatuId')->nullable();
+            $table->unsignedBigInteger('saksiDuaId')->nullable();
             $table->string('pemohonId', 16);
+            $table->boolean('status')->default(false);
             $table->boolean('verifikasiSaksi1')->default(false);
             $table->boolean('verifikasiSaksi2')->default(false);
-            $table->boolean('verifikasiInstansiKelahiran')->default(false);
+            $table->boolean('verifikasiInstansiKesehatan')->default(false);
             $table->boolean('verifikasiLurah')->default(false);
             $table->boolean('verifikasiAdmin')->default(false);
-            $table->timestamp('waktuCetakTerakhir')->default('0000-00-00 00:00:00');
+            $table->timestamp('waktuCetakTerakhir')->default(new Expression('null'));
             $table->timestamps();
 
             $table->unique('anakId');

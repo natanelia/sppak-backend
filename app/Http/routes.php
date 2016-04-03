@@ -29,4 +29,6 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::resource('pengguna', 'PenggunaController');
 
     Route::resource('penduduk', 'PendudukController');
+
+    Route::resource('kelahiran', 'KelahiranController');
 });

@@ -20,7 +20,7 @@ class AnakController extends Controller
         // $this->middleware('log');
     }
 
-    public function index()
+    public function index(Request $request)
     {
         try {
             $statusCode = 200;
@@ -45,12 +45,15 @@ class AnakController extends Controller
                     'penolongKelahiran' => $anak->penolongKelahiran,
                     'berat' => $anak->berat,
                     'panjang' => $anak->panjang,
+                    'kelahiran' => $anak->kelahiran,
                 ];
             }
 
         } catch (Exception $e) {
             $statusCode = 400;
-            $response = [];
+            $response = [
+                'error' => $e->getMessage(),
+            ];
         } finally {
             return response()->json($response, $statusCode);
         }

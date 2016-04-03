@@ -18,7 +18,7 @@ class CreateAnakTable extends Migration
             $table->string('nama');
             $table->enum('jenisKelamin', ['laki-laki', 'perempuan'])->default('laki-laki');
             $table->integer('kotaLahirId');
-            $table->date('tanggalLahir');
+            $table->dateTime('waktuLahir');
             $table->string('jenisLahir');
             $table->integer('anakKe');
             $table->string('penolongKelahiran');
