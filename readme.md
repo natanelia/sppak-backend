@@ -15,6 +15,57 @@ This is not real system and is build for course completion only.
 - Run `php artisan migrate`.
 
 ## API Documentation
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Semua Pengguna](#semua-pengguna)
+  - [Mendapatkan data pribadi](#mendapatkan-data-pribadi)
+    - [Request](#request)
+    - [Response](#response)
+  - [Melihat daftar penduduk](#melihat-daftar-penduduk)
+    - [Request](#request-1)
+    - [Response](#response-1)
+  - [Melihat satu penduduk](#melihat-satu-penduduk)
+    - [Request](#request-2)
+    - [Response](#response-2)
+  - [Melihat daftar permohonan akta kelahiran](#melihat-daftar-permohonan-akta-kelahiran)
+    - [Request](#request-3)
+    - [Response](#response-3)
+  - [Melihat satu permohonan akta kelahiran](#melihat-satu-permohonan-akta-kelahiran)
+    - [Request](#request-4)
+    - [Response](#response-4)
+- [Penduduk](#penduduk)
+  - [Melakukan pendaftaran](#melakukan-pendaftaran)
+    - [Request](#request-5)
+    - [Response](#response-5)
+  - [Akta kelahiran](#akta-kelahiran)
+    - [Membuat permohonan](#membuat-permohonan)
+      - [Request](#request-6)
+      - [Response](#response-6)
+    - [Mengedit permohonan](#mengedit-permohonan)
+      - [Request](#request-7)
+      - [Response](#response-7)
+    - [Menghapus permohonan](#menghapus-permohonan)
+      - [Request](#request-8)
+      - [Response](#response-8)
+- [Kelurahan](#kelurahan)
+  - [Verifikasi kelahiran](#verifikasi-kelahiran)
+    - [Request](#request-9)
+    - [Response](#response-9)
+- [Instansi Kesehatan](#instansi-kesehatan)
+  - [Verifikasi kelahiran](#verifikasi-kelahiran-1)
+    - [Request](#request-10)
+    - [Response](#response-10)
+- [Saksi](#saksi)
+  - [Verifikasi kelahiran](#verifikasi-kelahiran-2)
+- [Pegawai](#pegawai)
+  - [Verifikasi kelahiran](#verifikasi-kelahiran-3)
+    - [Request](#request-11)
+    - [Response](#response-11)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### Semua Pengguna
 #### Mendapatkan data pribadi
 ##### Request
@@ -164,7 +215,7 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 ```
 
 
-#### Melihat daftar permohonan kelahiran
+#### Melihat daftar permohonan akta kelahiran
 Pengguna hanya bisa melihat daftar permohonan kelahiran sesuai dengan *privilege*-nya.
 
 ##### Request
@@ -217,7 +268,7 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 }
 ```
 
-#### Melihat satu permohonan kelahiran
+#### Melihat satu permohonan akta kelahiran
 Pengguna hanya bisa melihat permohonan kelahiran sesuai dengan *privilege*-nya.
 
 ##### Request
@@ -293,7 +344,7 @@ Content-Type: application/json
 
 #### Akta kelahiran
 ##### Membuat permohonan
-##### Request
+###### Request
 ```HTTP
 POST /api/v1/kelahiran HTTP/1.1
 Host: localhost:8000
@@ -323,7 +374,7 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 }
 ```
 
-##### Response
+###### Response
 ```json
 {
   "message": "Berhasil membuat data permohonan kelahiran."
@@ -331,7 +382,7 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 ```
 
 ##### Mengedit permohonan
-##### Request
+###### Request
 ```HTTP
 PATCH /api/v1/kelahiran/45 HTTP/1.1
 Host: localhost:8000
@@ -361,7 +412,7 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 }
 ```
 
-##### Response
+###### Response
 ```json
 {
   "message": "Berhasil menyimpan data kelahiran."
@@ -369,7 +420,7 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 ```
 
 ##### Menghapus permohonan
-##### Request
+###### Request
 ```HTTP
 DELETE /api/v1/kelahiran/45 HTTP/1.1
 Host: localhost:8000
@@ -377,7 +428,7 @@ Content-Type: application/json
 Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 ```
 
-##### Response
+###### Response
 ```json
 {
   "message": "Berhasil menghapus data kelahiran."
