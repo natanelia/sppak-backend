@@ -15,9 +15,6 @@ class AnakController extends Controller
     public function __construct(Anak $anak)
     {
         $this->anak = $anak;
-
-        // $this->middleware('auth');
-        // $this->middleware('log');
     }
 
     public function index(Request $request)

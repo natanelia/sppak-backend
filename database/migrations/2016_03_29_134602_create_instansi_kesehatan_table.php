@@ -15,7 +15,6 @@ class CreateInstansiKesehatanTable extends Migration
     {
         Schema::create('instansiKesehatan', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('penggunaId');
             $table->string('nama');
             $table->enum('jenis', ['rumahSakit', 'klinik']);
             $table->string('alamat');

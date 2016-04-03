@@ -95,7 +95,7 @@ class PenggunaController extends Controller
     {
         try {
             $validator = validator()->make($request->all(), [
-                'email' => 'required|max:255',
+                'email' => 'required|email|unique:pengguna|max:255',
                 'password' => 'required|min:6',
                 'userable_id' => 'required',
                 'userable_type' => 'required|in:MorphPenduduk,MorphKelurahan,MorphInstansiKesehatan,MorphPegawai',

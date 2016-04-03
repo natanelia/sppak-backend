@@ -15,56 +15,28 @@ This is not real system and is build for course completion only.
 - Run `php artisan migrate`.
 
 ## API Documentation
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
 
+**Table of Contents**
 - [Semua Pengguna](#semua-pengguna)
   - [Mendapatkan data pribadi](#mendapatkan-data-pribadi)
-    - [Request](#request)
-    - [Response](#response)
   - [Melihat daftar penduduk](#melihat-daftar-penduduk)
-    - [Request](#request-1)
-    - [Response](#response-1)
   - [Melihat satu penduduk](#melihat-satu-penduduk)
-    - [Request](#request-2)
-    - [Response](#response-2)
   - [Melihat daftar permohonan akta kelahiran](#melihat-daftar-permohonan-akta-kelahiran)
-    - [Request](#request-3)
-    - [Response](#response-3)
   - [Melihat satu permohonan akta kelahiran](#melihat-satu-permohonan-akta-kelahiran)
-    - [Request](#request-4)
-    - [Response](#response-4)
 - [Penduduk](#penduduk)
   - [Melakukan pendaftaran](#melakukan-pendaftaran)
-    - [Request](#request-5)
-    - [Response](#response-5)
   - [Akta kelahiran](#akta-kelahiran)
     - [Membuat permohonan](#membuat-permohonan)
-      - [Request](#request-6)
-      - [Response](#response-6)
     - [Mengedit permohonan](#mengedit-permohonan)
-      - [Request](#request-7)
-      - [Response](#response-7)
     - [Menghapus permohonan](#menghapus-permohonan)
-      - [Request](#request-8)
-      - [Response](#response-8)
 - [Kelurahan](#kelurahan)
   - [Verifikasi kelahiran](#verifikasi-kelahiran)
-    - [Request](#request-9)
-    - [Response](#response-9)
 - [Instansi Kesehatan](#instansi-kesehatan)
   - [Verifikasi kelahiran](#verifikasi-kelahiran-1)
-    - [Request](#request-10)
-    - [Response](#response-10)
 - [Saksi](#saksi)
   - [Verifikasi kelahiran](#verifikasi-kelahiran-2)
 - [Pegawai](#pegawai)
   - [Verifikasi kelahiran](#verifikasi-kelahiran-3)
-    - [Request](#request-11)
-    - [Response](#response-11)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ### Semua Pengguna
 #### Mendapatkan data pribadi
@@ -81,13 +53,13 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 {
   "data": {
     "id": 1,
-    "email": "natanelia7@gmail.com",
-    "userable_id": "3573041003950011",
+    "email": "email@example.com",
+    "userable_id": "3573041234567890",
     "userable_type": "MorphPenduduk",
     "created_at": "2016-03-31 14:52:11",
     "updated_at": null,
     "userable": {
-      "id": 3573041003950011,
+      "id": 3573041234567890,
       "nama": "Natan",
       "tanggal_lahir": "1995-03-10",
       "tempat_lahir": "37",
@@ -125,7 +97,7 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 {
   "data": [
     {
-      "id": 3573041003950011,
+      "id": 3573041234567890,
       "nama": "Natan",
       "tanggal_lahir": "1995-03-10",
       "tempat_lahir": "37",
@@ -146,8 +118,8 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
       "status": "1",
       "pengguna": {
         "id": 1,
-        "email": "natanelia7@gmail.com",
-        "userable_id": "3573041003950011",
+        "email": "email@example.com",
+        "userable_id": "3573041234567890",
         "userable_type": "MorphPenduduk",
         "created_at": "2016-03-31 14:52:11",
         "updated_at": null
@@ -160,7 +132,7 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
       "tempat_lahir": "37",
       "jenis_kelamin": "l",
       "id_keluarga": "1",
-      "id_ayah": "3573041003950011",
+      "id_ayah": "3573041234567890",
       "id_ibu": null,
       "hubungan_keluarga": "Cucu",
       "golongan_darah": "A",
@@ -197,7 +169,7 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
     "tempat_lahir": "37",
     "jenis_kelamin": "l",
     "id_keluarga": "1",
-    "id_ayah": "3573041003950011",
+    "id_ayah": "3573041234567890",
     "id_ibu": null,
     "hubungan_keluarga": "Cucu",
     "golongan_darah": "A",
@@ -237,11 +209,11 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
       "instansiKesehatanId": null,
       "kartuKeluargaId": null,
       "aktaNikahId": null,
-      "ibuId": "3573041003950011",
-      "ayahId": "3573041003950011",
+      "ibuId": "3573041234567890",
+      "ayahId": "3573041234567890",
       "saksiSatuId": null,
       "saksiDuaId": null,
-      "pemohonId": "3573041003950011",
+      "pemohonId": "3573041234567890",
       "status": "0",
       "verifikasiSaksi1": "0",
       "verifikasiSaksi2": "0",
@@ -289,11 +261,11 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
     "instansiKesehatanId": null,
     "kartuKeluargaId": null,
     "aktaNikahId": null,
-    "ibuId": "3573041003950011",
-    "ayahId": "3573041003950011",
+    "ibuId": "3573041234567890",
+    "ayahId": "3573041234567890",
     "saksiSatuId": null,
     "saksiDuaId": null,
-    "pemohonId": "3573041003950011",
+    "pemohonId": "3573041234567890",
     "status": "0",
     "verifikasiSaksi1": "0",
     "verifikasiSaksi2": "0",
@@ -328,9 +300,9 @@ Host: localhost:8000
 Content-Type: application/json
 
 {
-    "email": "natan@outlook.com",
+    "email": "email@example.com",
     "password": "rahasia",
-    "userable_id": "3573041003950011",
+    "userable_id": "3573041234567890",
     "userable_type": "MorphPenduduk"
 }
 ```
@@ -365,11 +337,17 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
     },
     "kartuKeluargaId": null,
     "aktaNikahId": null,
-    "ibuId": "3573041003950011",
-    "ayahId": "3573041003950011",
-    "saksiSatuId": null,
-    "saksiDuaId": null,
-    "pemohonId": "3573041003950011",
+    "ibuId": "3573041234567890",
+    "ayahId": "3573041234567890",
+    "saksiSatu": {
+        "pendudukId": "3573041234567890",
+        "email": "email1@example.com"
+    },
+    "saksiDua": {
+        "pendudukId": "3573041234567890",
+        "email": "email2@example.com"
+    },
+    "pemohonId": "3573041234567890",
     "waktuCetakTerakhir": "2016-04-03T04:42:43.596Z"
 }
 ```
@@ -403,11 +381,17 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
     },
     "kartuKeluargaId": null,
     "aktaNikahId": null,
-    "ibuId": "3573041003950011",
-    "ayahId": "3573041003950011",
-    "saksiSatuId": null,
-    "saksiDuaId": null,
-    "pemohonId": "3573041003950011",
+    "ibuId": "3573041234567890",
+    "ayahId": "3573041234567890",
+    "saksiSatu": {
+        "pendudukId": "3573041234567890",
+        "email": "email1@example.com"
+    },
+    "saksiDua": {
+        "pendudukId": "3573041234567890",
+        "email": "email2@example.com"
+    },
+    "pemohonId": "3573041234567890",
     "waktuCetakTerakhir": "2016-04-03T04:42:43.596Z"
 }
 ```
@@ -483,8 +467,17 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 
 ### Saksi
 #### Verifikasi kelahiran
+##### Request
 ```
-TODO: Create specification
+GET /api/v1/saksi/{id}/verifikasi/{token} HTTP/1.1
+Host: localhost:8000
+```
+
+#### Response
+```json
+{
+  "message":"Saksi berhasil melakukan verifikasi kelahiran."
+}
 ```
 
 ### Pegawai

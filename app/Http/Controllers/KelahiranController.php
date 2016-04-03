@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class KelahiranController extends Controller
 {
@@ -124,8 +125,10 @@ class KelahiranController extends Controller
                 'aktaNikahId' => 'numeric',
                 'ibuId' => 'numeric',
                 'ayahId' => 'numeric',
-                'saksiSatuId' => 'numeric',
-                'saksiDuaId' => 'numeric',
+                'saksiSatu.pendudukId' => 'numeric',
+                'saksiSatu.email' => 'email',
+                'saksiDua.pendudukId' => 'numeric',
+                'saksiDua.email' => 'email',
                 'pemohonId' => 'numeric',
                 'status' => 'numeric|in:0,1,2',
             ]);
@@ -144,6 +147,36 @@ class KelahiranController extends Controller
 
                 if (isset($kelahiranData['status']) && $kelahiranData['status'] > 1) { // !== 2
                     unset($kelahiranData['status']);
+                }
+
+                if (isset($kelahiranData['saksiSatu'])) {
+                    $saksiSatuData = $kelahiranData['saksiSatu'];
+                    if (isset($saksiSatuData['pendudukId']) && isset($saksiSatuData['email'])) {
+                        $saksiSatu = \App\Saksi::create([
+                            'pendudukId' => $saksiSatuData['pendudukId'],
+                            'email' => $saksiSatuData['email'],
+                            'token' => Hash::make(str_random(255)),
+                        ]);
+                        unset($kelahiranData['saksiSatu']);
+                        $kelahiranData['saksiSatuId'] = $saksiSatu['id'];
+                        
+                        SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                    }
+                }
+
+                if (isset($kelahiranData['saksiDua'])) {
+                    $saksiDuaData = $kelahiranData['saksiDua'];
+                    if (isset($saksiDuaData['pendudukId']) && isset($saksiDuaData['email'])) {
+                        $saksiDua = \App\Saksi::create([
+                            'pendudukId' => $saksiDuaData['pendudukId'],
+                            'email' => $saksiDuaData['email'],
+                            'token' => Hash::make(str_random(255)),
+                        ]);
+                        unset($kelahiranData['saksiDua']);
+                        $kelahiranData['saksiDuaId'] = $saksiDua->id;
+
+                        SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak'], $saksiDuaData['email']);
+                    }
                 }
             } else if ($user['userable_type'] === 'MorphKelurahan') {
                 $kelahiranData = [
@@ -239,8 +272,6 @@ class KelahiranController extends Controller
     public function update(Request $request, $id) {
         $user = $request->user();
         try {
-            $failures = false;
-
             $kelahiranData = $request->all();
             $kelahiranData['id'] = $id;
             $validator = validator()->make($kelahiranData, [
@@ -259,8 +290,10 @@ class KelahiranController extends Controller
                 'aktaNikahId' => 'numeric',
                 'ibuId' => 'numeric',
                 'ayahId' => 'numeric',
-                'saksiSatuId' => 'numeric',
-                'saksiDuaId' => 'numeric',
+                'saksiSatu.pendudukId' => 'numeric',
+                'saksiSatu.email' => 'email',
+                'saksiDua.pendudukId' => 'numeric',
+                'saksiDua.email' => 'email',
                 'pemohonId' => 'numeric',
                 'status' => 'numeric|in:0,1,2',
             ]);
@@ -288,6 +321,62 @@ class KelahiranController extends Controller
 
                     if ($kelahiran['status'] != 0) {
                         unset($kelahiranData['status']);
+                    }
+
+                    if (isset($kelahiranData['saksiSatu'])) {
+                        $saksiSatu = \App\Saksi::find($kelahiran['saksiSatuId']);
+                        $saksiSatuData = $kelahiranData['saksiSatu'];
+
+                        if (isset($saksiSatuData['pendudukId']) && isset($saksiSatuData['email'])) {
+                            if ($saksiSatu == null) {
+                                $saksiSatu = \App\Saksi::create([
+                                    'pendudukId' => $saksiSatuData['pendudukId'],
+                                    'email' => $saksiSatuData['email'],
+                                    'token' => Hash::make(str_random(255)),
+                                ]);
+                                SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                            } else {
+                                if ($saksiSatuData['pendudukId'] != $saksiSatu['pendudukId'] || $saksiSatuData['email'] != $saksiSatu['email']) {
+                                    $saksiSatu['pendudukId'] = $saksiSatuData['pendudukId'];
+                                    $saksiSatu['email'] = $saksiSatuData['email'];
+                                    $saksiSatu['token'] = Hash::make(str_random(255));
+                                    $saksiSatu->save();
+                                    SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                                }
+                            }
+
+                            unset($kelahiranData['saksiSatu']);
+                            $kelahiranData['saksiSatuId'] = $saksiSatu->id;
+                        }
+                    }
+
+                    if (isset($kelahiranData['saksiDua'])) {
+                        $saksiDua = \App\Saksi::find($kelahiran['saksiDuaId']);
+                        $saksiDuaData = $kelahiranData['saksiDua'];
+
+                        if (isset($saksiDuaData['pendudukId']) && isset($saksiDuaData['email'])) {
+                            if ($saksiDua == null) {
+                                $saksiDua = \App\Saksi::create([
+                                    'pendudukId' => $saksiDuaData['pendudukId'],
+                                    'email' => $saksiDuaData['email'],
+                                    'token' => Hash::make(str_random(255)),
+                                ]);
+                                SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak']['nama'], $saksiDuaData['email']);
+                            } else {
+                                if ($saksiDuaData['pendudukId'] != $saksiDua['pendudukId'] || $saksiDuaData['email'] != $saksiDua['email']) {
+                                    $saksiDua['pendudukId'] = $saksiDuaData['pendudukId'];
+                                    $saksiDua['email'] = $saksiDuaData['email'];
+                                    $saksiDua['token'] = Hash::make(str_random(255));
+                                    $saksiDua->save();
+
+                                    SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak']['nama'], $saksiDuaData['email']);
+                                }
+                            }
+
+                            unset($kelahiranData['saksiDua']);
+                            $kelahiranData['saksiDuaId'] = $saksiDua->id;
+
+                        }
                     }
                 }
             } else if ($user['userable_type'] === 'MorphKelurahan') {
@@ -423,7 +512,16 @@ class KelahiranController extends Controller
             }
 
             if ($isAuthorized) {
-                $kelahiran->delete();
+                DB::beginTransaction();
+                try {
+                    $anak = \App\Anak::find($kelahiran['anakId']);
+                    $anak->delete();
+                    $kelahiran->delete();
+                } catch (Exception $e) {
+                    DB::rollback();
+                    throw $e;
+                }
+                DB::commit();
 
                 $statusCode = 200;
                 $response = [

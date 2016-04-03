@@ -17,18 +17,17 @@ Route::group(['middleware' => 'web'], function () {
     });
 });
 
-Route::group(['prefix' => 'api/v1'], function () {
+Route::group(['prefix' => env('API_URL', 'api/v1')], function () {
     Route::get('/', function() {
         return response()->json(['error' => 'URL tidak ditemukan'], 404);
     });
-
-    Route::resource('anak', 'AnakController', [
-        'only' => ['index', 'show', 'create', 'store', 'update', 'destroy']
-    ]);
 
     Route::resource('pengguna', 'PenggunaController');
 
     Route::resource('penduduk', 'PendudukController');
 
     Route::resource('kelahiran', 'KelahiranController');
+    
+    Route::get('saksi/{id}/verifikasi/{token}', 'SaksiController@verifyBirth')
+        ->where('token', '(.*)');
 });
