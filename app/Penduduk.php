@@ -11,6 +11,7 @@ class Penduduk extends Model
     
     protected $morphClass = 'MorphPenduduk';
 
+    protected $dates = ['tanggal_lahir'];
     protected $fillable = [
         'id',
         'nama',
@@ -31,6 +32,12 @@ class Penduduk extends Model
         'id_passport',
         'status',
     ];
+
+    public function generateId($kecamatanId, $tanggalLahir, $nomorUrut)
+    {
+        $birthDate = date_parse($tanggalLahir);
+
+    }
 
     public function pengguna()
     {

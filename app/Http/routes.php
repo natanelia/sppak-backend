@@ -17,7 +17,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 });
 
-Route::group(['prefix' => env('API_URL', 'api/v1')], function () {
+Route::group(['prefix' => env('API_URL', 'api/v1'), 'middleware' => 'cors'], function () {
     Route::get('/', function() {
         return response()->json(['error' => 'URL tidak ditemukan'], 404);
     });

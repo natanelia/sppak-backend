@@ -9,6 +9,7 @@ class Kelahiran extends Model
     protected $table = 'kelahiran';
     protected $connection = 'mysql';
 
+    protected $date = ['waktuCetakTerakhir'];
     protected $fillable = [
         'anakId',
         'kelurahanId',
