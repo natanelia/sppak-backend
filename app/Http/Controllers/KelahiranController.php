@@ -110,7 +110,7 @@ class KelahiranController extends Controller
 
             $kelahiranData = $request->all();
             $validator = validator()->make($kelahiranData, [
-                'anak.nama' => 'required|alpha',
+                'anak.nama' => 'required|string',
                 'anak.jenisKelamin' => 'required|in:laki-laki,perempuan',
                 'anak.kotaLahirId' => 'required|numeric',
                 'anak.golonganDarah' => 'string|in:A,B,AB,O',
