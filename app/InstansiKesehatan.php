@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class InstansiKesehatan extends Model
 {
-  protected $table = 'InstansiKesehatan';
+  protected $table = 'instansiKesehatan';
   protected $connection = 'mysql';
 
   protected $morphClass = 'MorphInstansiKesehatan';

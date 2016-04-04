@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kelurahan extends Model
+class Keluarga extends Model
 {
-    protected $table = 'kelurahan';
+    protected $table = 'keluarga';
     protected $connection = 'db_ppl_core';
 }

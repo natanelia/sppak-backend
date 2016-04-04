@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pegawai extends Model
 {
-  protected $table = 'pewagai';
+  protected $table = 'pegawai';
   protected $connection = 'db_ppl_core';
 
   protected $morphClass = 'MorphPegawai';

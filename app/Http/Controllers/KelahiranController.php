@@ -65,7 +65,7 @@ class KelahiranController extends Controller
                 }
                 
                 foreach ($kelahirans as $kelahiran) {
-                    $kelahiran->anak;
+                    $kelahiran->insertAllRelated();
                     $response['data'][] = $kelahiran;
                 }
             } else {
@@ -88,7 +88,7 @@ class KelahiranController extends Controller
             $kelahiran = $this->kelahiran->find($id);
             $statusCode = 200;
 
-            $kelahiran->anak;
+            $kelahiran->insertAllRelated();
             $response = [
                 'data' => $kelahiran,
             ];
