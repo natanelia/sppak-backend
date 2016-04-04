@@ -4,16 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kecamatan extends Model
+class RT extends Model
 {
-    protected $table = 'kecamatan';
+    protected $table = 'rt';
     protected $connection = 'db_ppl_core';
 
-    protected $hidden = ['created_at', 'updated_at'];
-    
-    public function kota()
+    public function RW()
     {
-        return $this->belongsTo(Kota::class, 'id_kota');
+        return $this->hasOne(RW::class, 'id', 'id_rw');
     }
 
     public function pengurus()

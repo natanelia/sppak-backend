@@ -34,6 +34,13 @@ Route::group(['prefix' => env('API_URL', 'api/v1'), 'middleware' => 'cors'], fun
 
     Route::resource('kelahiran', 'KelahiranController');
 
+    Route::resource('rt', 'RTController');
+    Route::resource('rw', 'RWController');
+    Route::resource('kelurahan', 'KelurahanController');
+    Route::resource('kecamatan', 'KecamatanController');
+    Route::resource('kota', 'KotaController');
+    Route::resource('provinsi', 'ProvinsiController');
+
     Route::get('saksi/{id}/verifikasi/{token}', 'SaksiController@verifyBirth')
         ->where('token', '(.*)');
 

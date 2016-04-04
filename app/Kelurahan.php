@@ -15,4 +15,21 @@ class Kelurahan extends Model
     {
         return $this->morphOne('MorphKelurahan', 'userable');
     }
+
+    public function kecamatan()
+    {
+        return $this->hasOne(Kecamatan::class, 'id', 'id_kecamatan');
+    }
+
+    public function pengurus()
+    {
+        return $this->hasOne(Penduduk::class, 'id', 'id_pengurus');
+    }
+
+    public function insertAllRelated()
+    {
+        $this->pengguna;
+        $this->kecamatan;
+        $this->pengurus;
+    }
 }
