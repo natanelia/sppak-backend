@@ -16,7 +16,7 @@ class PendudukController extends Controller
     public function __construct(Penduduk $penduduk)
     {
         $this->penduduk = $penduduk;
-        $this->middleware('auth.basic.once', ['only' => ['index', 'show']]);
+        $this->middleware('auth.basic.once', ['only' => ['show']]);
     }
 
     public function index(Request $request)
@@ -32,13 +32,6 @@ class PendudukController extends Controller
             $penduduks = \App\Penduduk::limit($limit)->offset($start)->get();
 
             foreach ($penduduks as $penduduk) {
-                if ($request->user()['userable_type'] === 'MorphPegawai'
-                    || ($request->user()['userable_type'] === 'MorphPenduduk' && $request->user()['userable_id'] == $penduduk['id'])
-                ) {
-
-                    $penduduk->pengguna;
-                }
-
                 $response['data'][] = $penduduk;
             }
         } catch (Exception $e) {

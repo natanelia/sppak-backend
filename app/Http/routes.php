@@ -22,12 +22,14 @@ Route::group(['prefix' => env('API_URL', 'api/v1')], function () {
         return response()->json(['error' => 'URL tidak ditemukan'], 404);
     });
 
+    Route::get('pengguna/login', 'PenggunaController@login');
     Route::resource('pengguna', 'PenggunaController');
 
     Route::resource('penduduk', 'PendudukController');
 
     Route::resource('kelahiran', 'KelahiranController');
-    
+
     Route::get('saksi/{id}/verifikasi/{token}', 'SaksiController@verifyBirth')
         ->where('token', '(.*)');
+
 });

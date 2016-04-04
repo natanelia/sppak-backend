@@ -16,7 +16,7 @@ class PenggunaController extends Controller
     public function __construct(Pengguna $pengguna)
     {
         $this->pengguna = $pengguna;
-        $this->middleware('auth.basic.once', ['only' => ['index', 'show']]);
+        $this->middleware('auth.basic.once', ['only' => ['index', 'show', 'login']]);
     }
 
     public function index(Request $request)
@@ -117,6 +117,26 @@ class PenggunaController extends Controller
                 'message' => $e->getMessage(),
             ];
             $statusCode = 400;
+        } finally {
+            return response()->json($response, $statusCode);
+        }
+    }
+
+    public function login(Request $request)
+    {
+        $user = $request->user();
+        try {
+            $pengguna = \App\Pengguna::where('email', $user['email'])->first();
+            // $pengguna->userable;
+            $response = [
+                'data' => $pengguna,
+            ];
+            $statusCode = 200;
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $response = [
+                'error' => $e->getMessage(),
+            ];
         } finally {
             return response()->json($response, $statusCode);
         }
