@@ -22,8 +22,6 @@ class CreateInstansiKesehatanTable extends Migration
             $table->timestamps();
 
             $table->index('nama');
-            $table->unique('penggunaId');
-            $table->foreign('penggunaId')->references('id')->on('pengguna')->onDelete('restrict');
         });
     }
 
