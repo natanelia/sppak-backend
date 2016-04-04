@@ -16,7 +16,7 @@ class PendudukController extends Controller
     public function __construct(Penduduk $penduduk)
     {
         $this->penduduk = $penduduk;
-        $this->middleware('auth.basic.once', ['only' => ['show']]);
+        $this->middleware('auth.basic.once', ['only' => []]);
     }
 
     public function index(Request $request)
@@ -36,7 +36,9 @@ class PendudukController extends Controller
             }
         } catch (Exception $e) {
             $statusCode = 400;
-            $response = [];
+            $response = [
+                'error' => $e->getMessage(),
+            ];
         } finally {
             return response()->json($response, $statusCode);
         }
@@ -46,29 +48,31 @@ class PendudukController extends Controller
     {
         $user = $request->user();
         $isAuthorized = false;
-        if ($user) {
-            if ($user['userable_type'] === 'MorphPenduduk') {
-                if ($user['userable_id'] == $id) {
-                    $isAuthorized = true;
-                }
-            } else {
-                $isAuthorized = true;
-            }
-        }
+//        if ($user) {
+//            if ($user['userable_type'] === 'MorphPenduduk') {
+//                if ($user['userable_id'] == $id) {
+//                    $isAuthorized = true;
+//                }
+//            } else {
+//                $isAuthorized = true;
+//            }
+//        }
 
         try {
             $statusCode = 200;
 
             $penduduk = $this->penduduk->find($id);
 
-            if ($isAuthorized) $penduduk->pengguna;
+            // if ($isAuthorized) $penduduk->pengguna;
             $response = [
                 'data' => $penduduk,
             ];
 
         } catch (Exception $e) {
             $statusCode = 400;
-            $response = [];
+            $response = [
+                'error' => $e->getMessage(),
+            ];
         } finally {
             return response()->json($response, $statusCode);
         }
