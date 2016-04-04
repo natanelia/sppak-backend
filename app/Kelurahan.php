@@ -18,7 +18,7 @@ class Kelurahan extends Model
 
     public function kecamatan()
     {
-        return $this->hasOne(Kecamatan::class, 'id', 'id_kecamatan');
+        return $this->belongsTo(Kecamatan::class, 'id_kecamatan');
     }
 
     public function pengurus()

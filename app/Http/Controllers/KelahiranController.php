@@ -436,7 +436,7 @@ class KelahiranController extends Controller
                 && $kelahiran['status'] == 1) {
 
                     $kelahiran['status'] = 2;
-                    makePenduduk($kelahiran);
+                    $this->makePenduduk($kelahiran);
 
             }
 
@@ -550,7 +550,7 @@ class KelahiranController extends Controller
         $anak = $kelahiran->anak;
         $ayah = \App\Penduduk::findOrFail($kelahiran['ayahId']);
         $pendudukData = [
-            'id' => '',
+            'id' => \App\Penduduk::generateId($kelahiran['kelurahanId'], $anak['waktuLahir']),
             'nama' => $anak['nama'],
             'tanggal_lahir' => $anak['waktuLahir'],
             'tempat_lahir' => $anak['kotaLahirId'],

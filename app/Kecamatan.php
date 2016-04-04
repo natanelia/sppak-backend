@@ -10,7 +10,12 @@ class Kecamatan extends Model
     protected $connection = 'db_ppl_core';
 
     protected $hidden = ['created_at', 'updated_at'];
-    
+
+    public function kelurahan()
+    {
+        return $this->hasMany(Kelurahan::class, 'id_kecamatan');
+    }
+
     public function kota()
     {
         return $this->belongsTo(Kota::class, 'id_kota');
