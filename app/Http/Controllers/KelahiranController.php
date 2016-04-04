@@ -135,7 +135,6 @@ class KelahiranController extends Controller
             ]);
 
             if ($validator->fails()) throw new Exception(implode(" ", $validator->getMessageBag()->all()));
-
             ////////////////////////////////////////////////////////////////////////////////////////////////
             if ($user['userable_type'] === 'MorphPenduduk') {
                 $kelahiranData['pemohonId'] = $user['userable_id'];
@@ -196,12 +195,13 @@ class KelahiranController extends Controller
                 unset($kelahiranData['verifikasiSaksiLurah']);
                 unset($kelahiranData['status']);
             } else {
-                throw new Exception("Anda tidak memiliki otorisasi untuk mengedit permohonan kelahiran ini.");
+                throw new Exception("Anda tidak memiliki otorisasi untuk membuat permohonan kelahiran ini.");
             }
 
             //////////////////////////////////////////////////////////////
             DB::beginTransaction();
             try {
+                var_dump($kelahiranData['anak']);
                 $anak = \App\Anak::create($request->get('anak'));
 
                 $kelahiranData['anakId'] = $anak->id;

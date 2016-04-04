@@ -10,7 +10,7 @@ class Anak extends Model
     protected $connection = 'mysql';
     public $timestamps = false;
 
-    protected $dates = ['waktuLahir'];
+    // protected $dates = ['waktuLahir'];
     /**
      * The attributes that are mass assignable.
      *
