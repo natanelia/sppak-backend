@@ -201,7 +201,6 @@ class KelahiranController extends Controller
             //////////////////////////////////////////////////////////////
             DB::beginTransaction();
             try {
-                var_dump($kelahiranData['anak']);
                 $anak = \App\Anak::create($request->get('anak'));
 
                 $kelahiranData['anakId'] = $anak->id;
