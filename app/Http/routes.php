@@ -1,5 +1,10 @@
 <?php
 
+header('Access-Control-Allow-Origin: http://www.sppak.dev');
+header('Access-Control-Allow-Credentials: true');
+header('Access-Control-Allow-Headers: Authorization, Content-Type' );
+header('Access-Control-Max-Age: 86400' );
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
