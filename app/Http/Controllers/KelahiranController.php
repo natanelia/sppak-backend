@@ -113,6 +113,7 @@ class KelahiranController extends Controller
                 'anak.nama' => 'required|alpha',
                 'anak.jenisKelamin' => 'required|in:laki-laki,perempuan',
                 'anak.kotaLahirId' => 'required|numeric',
+                'anak.golonganDarah' => 'string|in:A,B,AB,O',
                 'anak.waktuLahir' => 'date',
                 'anak.jenisLahir' => 'string',
                 'anak.anakKe' => 'numeric',
@@ -212,6 +213,7 @@ class KelahiranController extends Controller
                             'nama' => 'required|alpha',
                             'jenisKelamin' => 'required|in:laki-laki,perempuan',
                             'kotaLahirId' => 'required|numeric',
+                            'golonganDarah' => 'required|string|in:A,B,AB,O',
                             'waktuLahir' => 'required|date',
                             'jenisLahir' => 'required|string',
                             'anakKe' => 'required|numeric',
@@ -278,6 +280,7 @@ class KelahiranController extends Controller
                 'anak.nama' => 'alpha',
                 'anak.jenisKelamin' => 'in:laki-laki,perempuan',
                 'anak.kotaLahirId' => 'numeric',
+                'anak.golonganDarah' => 'string|in:A,B,AB,O',
                 'anak.waktuLahir' => 'date',
                 'anak.jenisLahir' => 'string',
                 'anak.anakKe' => 'numeric',
@@ -434,6 +437,7 @@ class KelahiranController extends Controller
                 && $kelahiran['status'] == 1) {
 
                     $kelahiran['status'] = 2;
+                    makePenduduk($kelahiran);
 
             }
 
@@ -444,6 +448,7 @@ class KelahiranController extends Controller
                         'nama' => 'required|alpha',
                         'jenisKelamin' => 'required|in:laki-laki,perempuan',
                         'kotaLahirId' => 'required|numeric',
+                        'golonganDarah' => 'required|string|in:A,B,AB,O',
                         'waktuLahir' => 'required|date',
                         'jenisLahir' => 'required|string',
                         'anakKe' => 'required|numeric',
@@ -539,6 +544,29 @@ class KelahiranController extends Controller
         } finally {
             return response()->json($response, $statusCode);
         }
+    }
+
+    public function makePenduduk(\App\Kelahiran $kelahiran)
+    {
+        $anak = $kelahiran->anak;
+        $ayah = \App\Penduduk::findOrFail($kelahiran['ayahId']);
+        $pendudukData = [
+            'id' => '',
+            'nama' => $anak['nama'],
+            'tanggal_lahir' => $anak['waktuLahir'],
+            'tempat_lahir' => $anak['kotaLahirId'],
+            'jenis_kelamin' => substr($anak['jenisKelamin'], 0, 1),
+            'id_keluarga' => $kelahiran['kartuKeluargaId'],
+            'id_ayah' => $kelahiran['ayahId'],
+            'id_ibu' => $kelahiran['ibuId'],
+            'hubungan_keluarga' => 'Anak',
+            'golongan_darah' => $anak['golonganDarah'],
+            'agama' => $ayah['agama'],
+            'wni' => true,
+            'status_perkawinan' => 'Belum Kawin',
+            'status' => true,
+        ];
+        $penduduk = \App\Penduduk::create($pendudukData);
     }
 
     public function missingMethod($parameters = array())
