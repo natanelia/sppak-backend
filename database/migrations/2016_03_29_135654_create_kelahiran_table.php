@@ -31,7 +31,7 @@ class CreateKelahiranTable extends Migration
             $table->boolean('verifikasiInstansiKesehatan')->default(false);
             $table->boolean('verifikasiLurah')->default(false);
             $table->boolean('verifikasiAdmin')->default(false);
-            $table->timestamp('waktuCetakTerakhir')->default(new Expression('null'));
+            $table->timestamp('waktuCetakTerakhir')->default(new Expression('null'))->nullable();
             $table->timestamps();
 
             $table->unique('anakId');
