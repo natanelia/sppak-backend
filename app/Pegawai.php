@@ -11,7 +11,8 @@ class Pegawai extends Model
 
   protected $morphClass = 'MorphPegawai';
 
-  public function pegawai()
+  protected $primaryKey = 'nip';
+  public function pengguna()
   {
       return $this->morphOne('MorphPegawai', 'userable');
   }

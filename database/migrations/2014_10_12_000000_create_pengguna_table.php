@@ -18,7 +18,7 @@ class CreatePenggunaTable extends Migration
             // $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('userable_id');
+            $table->string('userable_id', 20);
             $table->enum('userable_type', ['MorphPenduduk', 'MorphKelurahan', 'MorphInstansiKesehatan', 'MorphPegawai']);
             $table->rememberToken();
             $table->timestamps();

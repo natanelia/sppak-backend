@@ -21,7 +21,7 @@ class PenggunaController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->user() && $request->user()['userable_type'] === 'MorphAdmin') {
+        if ($request->user() && $request->user()['userable_type'] === 'MorphPegawai') {
             $limit = $request->input('limit') ? $request->input('limit') : 10;
             $start = $request->input('start') ? $request->input('start') : 0;
             try {
@@ -33,7 +33,7 @@ class PenggunaController extends Controller
                 $penggunas = \App\Pengguna::limit($limit)->offset($start)->get();
 
                 foreach ($penggunas as $pengguna) {
-                    $pengguna->pengguna;
+                    $pengguna->userable;
                     $response['data'][] = $pengguna;
                 }
 
