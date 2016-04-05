@@ -30,31 +30,39 @@ class Kelahiran extends Model
     ];
 
     public function anak() {
-        return $this->belongsTo(\App\Anak::class, 'anakId');
+        return $this->belongsTo(Anak::class, 'anakId');
     }
 
     public function kelurahan() {
-        return $this->hasOne(\App\Kelurahan::class, 'id', 'kelurahanId');
+        return $this->belongsTo(Kelurahan::class, 'kelurahanId');
     }
 
     public function instansiKesehatan() {
-        return $this->hasOne(\App\InstansiKesehatan::class, 'id', 'instansiKesehatanId');
+        return $this->belongsTo(InstansiKesehatan::class, 'instansiKesehatanId');
     }
 
     public function keluarga() {
-        return $this->hasOne(\App\Keluarga::class, 'id', 'kartuKeluargaId');
+        return $this->belongsTo(Keluarga::class, 'kartuKeluargaId');
     }
 
     public function ibu() {
-        return $this->hasOne(\App\Penduduk::class, 'id', 'ibuId');
+        return $this->belongsTo(Penduduk::class, 'ibuId');
     }
 
     public function ayah() {
-        return $this->hasOne(\App\Penduduk::class, 'id', 'ayahId');
+        return $this->belongsTo(Penduduk::class, 'ayahId');
     }
 
     public function pemohon() {
-        return $this->hasOne(\App\Penduduk::class, 'id', 'pemohonId');
+        return $this->belongsTo(Penduduk::class, 'pemohonId');
+    }
+
+    public function saksiSatu() {
+        return $this->hasOne(Saksi::class, 'id', 'saksiSatuId');
+    }
+
+    public function saksiDua() {
+        return $this->hasOne(Saksi::class, 'id', 'saksiDuaId');
     }
 
     public function insertAllRelated() {
@@ -65,5 +73,7 @@ class Kelahiran extends Model
         $this->ibu;
         $this->ayah;
         $this->pemohon;
+        $this->saksiSatu;
+        $this->saksiDua;
     }
 }

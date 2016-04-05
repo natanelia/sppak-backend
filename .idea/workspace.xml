@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="9580ee9d-9f57-466a-adde-f85c1478524f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Kecamatan.php" afterPath="$PROJECT_DIR$/app/Kecamatan.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Kelurahan.php" afterPath="$PROJECT_DIR$/app/Kelurahan.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PendudukController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PendudukController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Kelahiran.php" afterPath="$PROJECT_DIR$/app/Kelahiran.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Penduduk.php" afterPath="$PROJECT_DIR$/app/Penduduk.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
     </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,41 +30,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PenggunaController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PenggunaController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1092">
-              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KelurahanController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KelurahanController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="KelahiranController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1497">
-              <caret line="440" column="13" selection-start-line="440" selection-start-column="13" selection-end-line="440" selection-end-column="13" />
+            <state relative-caret-position="213">
+              <caret line="545" column="5" selection-start-line="545" selection-start-column="5" selection-end-line="545" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Penduduk.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Penduduk.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Penduduk.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+            <state relative-caret-position="468">
+              <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Pengguna.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Pengguna.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="281">
+              <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -72,8 +63,79 @@
       <file leaf-file-name="PendudukController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PendudukController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="348">
+              <caret line="93" column="33" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="385">
+                <caret line="427" column="4" selection-start-line="427" selection-start-column="4" selection-end-line="427" selection-end-column="4" />
+                <folding>
+                  <marker date="1459826905390" expanded="true" signature="1940:2719" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="1952:2717" placeholder="{&quot;id&quot;: 1...}" />
+                  <marker date="1459826905390" expanded="true" signature="2159:2713" placeholder="{&quot;id&quot;: 3573041234567890...}" />
+                  <marker date="1459826905390" expanded="true" signature="2948:4320" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="2960:4318" placeholder="[...]" />
+                  <marker date="1459826905390" expanded="true" signature="2966:3761" placeholder="{&quot;id&quot;: 3573041234567890...}" />
+                  <marker date="1459826905390" expanded="true" signature="3534:3755" placeholder="{&quot;id&quot;: 1...}" />
+                  <marker date="1459826905390" expanded="true" signature="3767:4314" placeholder="{&quot;id&quot;: 3573041003950012...}" />
+                  <marker date="1459826905390" expanded="true" signature="4564:5085" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="4576:5083" placeholder="{&quot;id&quot;: 3573041003950012...}" />
+                  <marker date="1459826905390" expanded="true" signature="5421:8472" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="5433:8470" placeholder="[...]" />
+                  <marker date="1459826905390" expanded="true" signature="5439:8466" placeholder="{&quot;id&quot;: 42...}" />
+                  <marker date="1459826905390" expanded="true" signature="6111:6461" placeholder="{&quot;id&quot;: 3279012810930002...}" />
+                  <marker date="1459826905390" expanded="true" signature="6559:7164" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="7180:7785" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="7804:8402" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="7804:8409" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="8801:11638" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="8813:11636" placeholder="{&quot;id&quot;: 42...}" />
+                  <marker date="1459826905390" expanded="true" signature="9443:9769" placeholder="{&quot;id&quot;: 3279012810930002...}" />
+                  <marker date="1459826905390" expanded="true" signature="9859:10424" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="10438:11003" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="11020:11585" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="11578:11585" placeholder="{&quot;id&quot;: 29...}" />
+                  <marker date="1459826905390" expanded="true" signature="11959:12009" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data pengguna.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="12982:13044" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data permohonan kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="14002:14055" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="14291:14344" placeholder="{&quot;message&quot;: &quot;Berhasil menghapus data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="14726:14779" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="15182:15235" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="15394:15458" placeholder="{&quot;message&quot;: &quot;Saksi berhasil melakukan verifikasi kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="15965:16018" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="16257:17767" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="16269:17225" placeholder="{&quot;id&quot;: 5...}" />
+                  <marker date="1459826905390" expanded="true" signature="16895:17221" placeholder="{&quot;id&quot;: 3279012810930006...}" />
+                  <marker date="1459826905390" expanded="true" signature="17240:17765" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Keluarga.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Keluarga.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -84,36 +146,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
               <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Kecamatan.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Kecamatan.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Kelahiran.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Kelahiran.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InstansiKesehatan.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/InstansiKesehatan.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -168,14 +200,12 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/SaksiController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_03_29_134340_create_anak_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
-        <option value="$PROJECT_DIR$/app/Kelahiran.php" />
         <option value="$PROJECT_DIR$/app/InstansiKesehatan.php" />
         <option value="$PROJECT_DIR$/app/Anak.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_pengguna_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PenggunaController.php" />
         <option value="$PROJECT_DIR$/app/Pegawai.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/Cors.php" />
-        <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/app/Keluarga.php" />
         <option value="$PROJECT_DIR$/app/RT.php" />
         <option value="$PROJECT_DIR$/app/RW.php" />
@@ -186,13 +216,15 @@
         <option value="$PROJECT_DIR$/app/Kota.php" />
         <option value="$PROJECT_DIR$/app/Provinsi.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProvinsiController.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/PendudukController.php" />
         <option value="$PROJECT_DIR$/app/Kelurahan.php" />
         <option value="$PROJECT_DIR$/app/Kecamatan.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php" />
         <option value="$PROJECT_DIR$/app/Penduduk.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/PendudukController.php" />
+        <option value="$PROJECT_DIR$/app/Kelahiran.php" />
+        <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
   </component>
@@ -211,10 +243,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1322" />
-    <option name="y" value="-4" />
-    <option name="width" value="1323" />
-    <option name="height" value="773" />
+    <option name="x" value="45" />
+    <option name="y" value="-744" />
+    <option name="width" value="1321" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -241,6 +273,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -384,7 +417,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -844,15 +876,16 @@
       <workItem from="1459643150796" duration="30881000" />
       <workItem from="1459748695118" duration="3308000" />
       <workItem from="1459755353044" duration="5396000" />
-      <workItem from="1459769769204" duration="23557000" />
+      <workItem from="1459769769204" duration="24159000" />
+      <workItem from="1459822079329" duration="4545000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114813000" />
+    <option name="totallyTimeSpent" value="119960000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1322" y="-4" width="1323" height="773" extended-state="6" />
+    <frame x="45" y="-744" width="1321" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1028,7 +1061,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="143" column="28" selection-start-line="143" selection-start-column="28" selection-end-line="143" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1046,7 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
           <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1054,7 +1085,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="22" column="52" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1062,7 +1092,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1070,7 +1099,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
           <caret line="180" column="59" selection-start-line="180" selection-start-column="59" selection-end-line="180" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1086,56 +1114,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1604">
-            <caret line="424" column="1" selection-start-line="424" selection-start-column="1" selection-end-line="424" selection-end-column="1" />
-            <folding>
-              <marker date="1459789308420" expanded="true" signature="1854:2633" placeholder="{...}" />
-              <marker date="1459789308420" expanded="true" signature="1866:2631" placeholder="{&quot;id&quot;: 1...}" />
-              <marker date="1459789308420" expanded="true" signature="2073:2627" placeholder="{&quot;id&quot;: 3573041234567890...}" />
-              <marker date="1459789308420" expanded="true" signature="2862:4234" placeholder="{...}" />
-              <marker date="1459789308420" expanded="true" signature="2874:4232" placeholder="[...]" />
-              <marker date="1459789308420" expanded="true" signature="2880:3675" placeholder="{&quot;id&quot;: 3573041234567890...}" />
-              <marker date="1459789308420" expanded="true" signature="3448:3669" placeholder="{&quot;id&quot;: 1...}" />
-              <marker date="1459789308420" expanded="true" signature="3681:4228" placeholder="{&quot;id&quot;: 3573041003950012...}" />
-              <marker date="1459789308420" expanded="true" signature="4478:4999" placeholder="{...}" />
-              <marker date="1459789308420" expanded="true" signature="4490:4997" placeholder="{&quot;id&quot;: 3573041003950012...}" />
-              <marker date="1459789308420" expanded="true" signature="5335:8335" placeholder="{...}" />
-              <marker date="1459789308420" expanded="true" signature="5347:8333" placeholder="[...]" />
-              <marker date="1459789308420" expanded="true" signature="5353:8329" placeholder="{&quot;id&quot;: 42...}" />
-              <marker date="1459789308420" expanded="true" signature="6025:6375" placeholder="{&quot;id&quot;: 3279012810930002...}" />
-              <marker date="1459789308420" expanded="true" signature="6473:7078" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="7094:7699" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="7718:8323" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="8664:11454" placeholder="{...}" />
-              <marker date="1459789308420" expanded="true" signature="8676:11452" placeholder="{&quot;id&quot;: 42...}" />
-              <marker date="1459789308420" expanded="true" signature="9306:9632" placeholder="{&quot;id&quot;: 3279012810930002...}" />
-              <marker date="1459789308420" expanded="true" signature="9722:10287" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="10301:10866" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="10883:11448" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="11441:11448" placeholder="{&quot;id&quot;: 29...}" />
-              <marker date="1459789308420" expanded="true" signature="11775:11825" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data pengguna.&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="12798:12860" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data permohonan kelahiran.&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="13818:13871" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="14107:14160" placeholder="{&quot;message&quot;: &quot;Berhasil menghapus data kelahiran.&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="14542:14595" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="14998:15051" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="15210:15274" placeholder="{&quot;message&quot;: &quot;Saksi berhasil melakukan verifikasi kelahiran.&quot;...}" />
-              <marker date="1459789308420" expanded="true" signature="15781:15834" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
-            </folding>
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1143,23 +1121,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Pengguna.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Keluarga.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1167,15 +1128,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/RW.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1183,7 +1135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,7 +1142,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1199,7 +1149,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1207,7 +1156,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1215,15 +1163,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="89" selection-start-line="2" selection-start-column="89" selection-end-line="2" selection-end-column="89" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1231,9 +1170,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1241,30 +1177,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PenggunaController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1092">
+        <state relative-caret-position="450">
           <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PendudukController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Kota.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="53" />
           <folding />
         </state>
       </provider>
@@ -1285,18 +1204,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Kelahiran.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KelurahanController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Keluarga.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/RW.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Kota.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="11" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Pengguna.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="29" column="31" selection-start-line="29" selection-start-column="31" selection-end-line="29" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Penduduk.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="545" column="5" selection-start-line="545" selection-start-column="5" selection-end-line="545" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PendudukController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="93" column="33" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Kelahiran.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="60" column="62" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -1309,19 +1292,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1497">
-          <caret line="440" column="13" selection-start-line="440" selection-start-column="13" selection-end-line="440" selection-end-column="13" />
-          <folding />
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Penduduk.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-          <folding />
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="385">
+            <caret line="427" column="4" selection-start-line="427" selection-start-column="4" selection-end-line="427" selection-end-column="4" />
+            <folding>
+              <marker date="1459826905390" expanded="true" signature="1940:2719" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="1952:2717" placeholder="{&quot;id&quot;: 1...}" />
+              <marker date="1459826905390" expanded="true" signature="2159:2713" placeholder="{&quot;id&quot;: 3573041234567890...}" />
+              <marker date="1459826905390" expanded="true" signature="2948:4320" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="2960:4318" placeholder="[...]" />
+              <marker date="1459826905390" expanded="true" signature="2966:3761" placeholder="{&quot;id&quot;: 3573041234567890...}" />
+              <marker date="1459826905390" expanded="true" signature="3534:3755" placeholder="{&quot;id&quot;: 1...}" />
+              <marker date="1459826905390" expanded="true" signature="3767:4314" placeholder="{&quot;id&quot;: 3573041003950012...}" />
+              <marker date="1459826905390" expanded="true" signature="4564:5085" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="4576:5083" placeholder="{&quot;id&quot;: 3573041003950012...}" />
+              <marker date="1459826905390" expanded="true" signature="5421:8472" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="5433:8470" placeholder="[...]" />
+              <marker date="1459826905390" expanded="true" signature="5439:8466" placeholder="{&quot;id&quot;: 42...}" />
+              <marker date="1459826905390" expanded="true" signature="6111:6461" placeholder="{&quot;id&quot;: 3279012810930002...}" />
+              <marker date="1459826905390" expanded="true" signature="6559:7164" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="7180:7785" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="7804:8402" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="7804:8409" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="8801:11638" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="8813:11636" placeholder="{&quot;id&quot;: 42...}" />
+              <marker date="1459826905390" expanded="true" signature="9443:9769" placeholder="{&quot;id&quot;: 3279012810930002...}" />
+              <marker date="1459826905390" expanded="true" signature="9859:10424" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="10438:11003" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="11020:11585" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="11578:11585" placeholder="{&quot;id&quot;: 29...}" />
+              <marker date="1459826905390" expanded="true" signature="11959:12009" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data pengguna.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="12982:13044" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data permohonan kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="14002:14055" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="14291:14344" placeholder="{&quot;message&quot;: &quot;Berhasil menghapus data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="14726:14779" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="15182:15235" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="15394:15458" placeholder="{&quot;message&quot;: &quot;Saksi berhasil melakukan verifikasi kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="15965:16018" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="16257:17767" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="16269:17225" placeholder="{&quot;id&quot;: 5...}" />
+              <marker date="1459826905390" expanded="true" signature="16895:17221" placeholder="{&quot;id&quot;: 3279012810930006...}" />
+              <marker date="1459826905390" expanded="true" signature="17240:17765" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

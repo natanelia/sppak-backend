@@ -37,6 +37,7 @@ This is not real system and is build for course completion only.
   - [Verifikasi kelahiran](#verifikasi-kelahiran-2)
 - [Pegawai](#pegawai)
   - [Verifikasi kelahiran](#verifikasi-kelahiran-3)
+  - [Melihat daftar permohonan dari pemohon](#melihat-daftar-permohonan-dari-pemohon)
 
 ### Semua Pengguna
 #### Mendapatkan data pribadi
@@ -301,7 +302,9 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
         "id_passport": null,
         "created_at": "2016-03-31 14:48:42",
         "status": "1"
-      }
+      },
+      "saksi_satu": null,
+      "saksi_dua": null
     }
   ]
 }
@@ -420,7 +423,9 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
       "id_passport": null,
       "created_at": "2016-03-31 14:48:42",
       "status": "1"
-    }
+    },
+    "saksi_satu": null,
+    "saksi_dua": null
   }
 }
 ```
@@ -635,6 +640,76 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 ```json
 {
   "message": "Berhasil menyimpan data kelahiran."
+}
+```
+
+#### Melihat daftar permohonan dari pemohon
+##### Request
+```HTTP
+GET /api/v1/pemohon/3573041003950011/kelahiran HTTP/1.1
+Host: localhost:8000
+Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
+```
+
+##### Response
+```json
+{
+  "data": {
+    "id": 5,
+    "anakId": "3279012810930006",
+    "kelurahanId": "1",
+    "instansiKesehatanId": "9",
+    "kartuKeluargaId": "1",
+    "aktaNikahId": "1",
+    "ibuId": "3573041003950012",
+    "ayahId": "3573041003950011",
+    "saksiSatuId": null,
+    "saksiDuaId": null,
+    "pemohonId": "3573041003950011",
+    "status": "2",
+    "verifikasiSaksi1": "1",
+    "verifikasiSaksi2": "1",
+    "verifikasiInstansiKesehatan": "1",
+    "verifikasiLurah": "1",
+    "verifikasiAdmin": "1",
+    "waktuCetakTerakhir": "2016-04-03 04:42:44",
+    "created_at": "2016-04-04 15:21:28",
+    "updated_at": "2016-04-04 20:35:43",
+    "anak": {
+      "id": 3279012810930006,
+      "nama": "Joko",
+      "jenisKelamin": "laki-laki",
+      "golonganDarah": "A",
+      "kotaLahirId": "37",
+      "waktuLahir": "2016-04-03 04:42:44",
+      "jenisLahir": "Kembar Dua",
+      "anakKe": "1",
+      "penolongKelahiran": "Dokter",
+      "berat": "2",
+      "panjang": "40"
+    }
+  },
+  "pemohon": {
+    "id": "3573041003950011",
+    "nama": "Natan",
+    "tanggal_lahir": "1995-03-10 00:00:00",
+    "tempat_lahir": "37",
+    "jenis_kelamin": "",
+    "id_keluarga": null,
+    "id_ayah": null,
+    "id_ibu": null,
+    "hubungan_keluarga": "Anak",
+    "golongan_darah": "B",
+    "agama": "Kristen",
+    "wni": "1",
+    "status_perkawinan": "",
+    "pekerjaan": "Mahasiswa",
+    "pendidikan": "Sekolah Menengah",
+    "id_izin_tetap": null,
+    "id_passport": null,
+    "created_at": "2016-03-31 14:48:42",
+    "status": "1"
+  }
 }
 ```
 

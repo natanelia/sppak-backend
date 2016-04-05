@@ -71,4 +71,19 @@ class Penduduk extends Model
     {
         return $this->morphOne('MorphPengguna', 'userable');
     }
+
+    public function kelahiranOfPemohon()
+    {
+        return $this->hasMany(Kelahiran::class, 'pemohonId');
+    }
+
+    public function kelahiranOfAyah()
+    {
+        return $this->hasMany(Kelahiran::class, 'ayahId');
+    }
+
+    public function kelahiranOfIbu()
+    {
+        return $this->hasMany(Kelahiran::class, 'ibuId');
+    }
 }

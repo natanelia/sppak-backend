@@ -16,7 +16,7 @@ class PendudukController extends Controller
     public function __construct(Penduduk $penduduk)
     {
         $this->penduduk = $penduduk;
-        $this->middleware('auth.basic.once', ['only' => []]);
+        $this->middleware('auth.basic.once', ['only' => ['getPermohonanAsPemohon']]);
     }
 
     public function index(Request $request)
@@ -46,8 +46,8 @@ class PendudukController extends Controller
 
     public function show(Request $request, $id)
     {
-        $user = $request->user();
-        $isAuthorized = false;
+//        $user = $request->user();
+//        $isAuthorized = false;
 //        if ($user) {
 //            if ($user['userable_type'] === 'MorphPenduduk') {
 //                if ($user['userable_id'] == $id) {
@@ -68,6 +68,39 @@ class PendudukController extends Controller
                 'data' => $penduduk,
             ];
 
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $response = [
+                'error' => $e->getMessage(),
+            ];
+        } finally {
+            return response()->json($response, $statusCode);
+        }
+    }
+
+    public function getPermohonanAsPemohon(Request $request, $id)
+    {
+        $user = $request->user();
+        try {
+            if ($user['userable_type'] !== 'MorphPegawai') throw new Exception("Anda tidak memiliki otorisasi untuk menampilkan permohonan penduduk.");
+
+            $sudahDicetak = $request->input('sudahDicetak');
+            $status = $request->input('status');
+
+            $pemohon = \App\Penduduk::findOrFail($id);
+            $daftarKelahiran = $pemohon->kelahiranOfPemohon;
+
+            foreach ($daftarKelahiran as $kelahiran) {
+                $kelahiran->anak;
+            }
+
+            unset($pemohon->kelahiranOfPemohon);
+
+            $response = [
+                'data' => $kelahiran,
+                'pemohon' => $pemohon,
+            ];
+            $statusCode = 200;
         } catch (Exception $e) {
             $statusCode = 400;
             $response = [
