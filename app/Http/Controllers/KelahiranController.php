@@ -18,7 +18,7 @@ class KelahiranController extends Controller
     {
         $this->kelahiran = $kelahiran;
 
-        $this->middleware('auth.basic.once', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+        $this->middleware('auth.basic', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
     }
 
     public function index(Request $request)

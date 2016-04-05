@@ -16,7 +16,7 @@ class PenggunaController extends Controller
     public function __construct(Pengguna $pengguna)
     {
         $this->pengguna = $pengguna;
-        $this->middleware('auth.basic.once', ['only' => ['index', 'show', 'login']]);
+        $this->middleware('auth.basic', ['only' => ['index', 'show', 'login']]);
     }
 
     public function index(Request $request)
@@ -140,5 +140,11 @@ class PenggunaController extends Controller
         } finally {
             return response()->json($response, $statusCode);
         }
+    }
+
+    public function logout(Request $request)
+    {
+        \Auth::logout();
+        return response()->json(['message' => 'Logged out.'], 200);
     }
 }

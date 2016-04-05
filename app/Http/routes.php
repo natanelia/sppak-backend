@@ -28,6 +28,7 @@ Route::group(['prefix' => env('API_URL', 'api/v1'), 'middleware' => 'cors'], fun
     });
 
     Route::get('pengguna/login', 'PenggunaController@login');
+    Route::get('pengguna/logout', 'PenggunaController@logout');
     Route::resource('pengguna', 'PenggunaController');
 
     Route::resource('penduduk', 'PendudukController');

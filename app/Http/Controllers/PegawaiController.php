@@ -15,7 +15,7 @@ class PegawaiController extends Controller
     public function __construct(Pegawai $pegawai)
     {
         $this->pegawai = $pegawai;
-        $this->middleware('auth.basic.once', ['only' => ['index', 'show']]);
+        $this->middleware('auth.basic', ['only' => ['index', 'show']]);
     }
 
     public function index(Request $request)

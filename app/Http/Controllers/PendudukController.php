@@ -16,7 +16,7 @@ class PendudukController extends Controller
     public function __construct(Penduduk $penduduk)
     {
         $this->penduduk = $penduduk;
-        $this->middleware('auth.basic.once', ['only' => ['getPermohonanAsPemohon']]);
+        $this->middleware('auth.basic', ['only' => ['getPermohonanAsPemohon']]);
     }
 
     public function index(Request $request)
