@@ -35,6 +35,8 @@ Route::group(['prefix' => env('API_URL', 'api/v1'), 'middleware' => 'cors'], fun
     Route::resource('penduduk', 'PendudukController');
     Route::get('pemohon/{id}/kelahiran', 'PendudukController@getPermohonanAsPemohon');
 
+    Route::resource('instansiKesehatan', 'InstansiKesehatanController');
+
     Route::resource('kelahiran', 'KelahiranController');
 
     Route::resource('rt', 'RTController');
