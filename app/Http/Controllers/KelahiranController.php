@@ -519,8 +519,8 @@ class KelahiranController extends Controller
                 DB::beginTransaction();
                 try {
                     $anak = \App\Anak::find($kelahiran['anakId']);
-                    $anak->delete();
                     $kelahiran->delete();
+                    $anak->delete();
                 } catch (Exception $e) {
                     DB::rollback();
                     throw $e;
