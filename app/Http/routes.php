@@ -4,6 +4,7 @@ header('Access-Control-Allow-Origin: ' . env('FRONTEND_BASE_URL', 'http://www.sp
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Headers: Authorization, Content-Type' );
 header('Access-Control-Max-Age: 86400' );
+header('Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE');
 
 /*
 |--------------------------------------------------------------------------
