@@ -63,7 +63,7 @@ class KelahiranController extends Controller
                 } else {
                     $kelahirans = [];
                 }
-                
+
                 foreach ($kelahirans as $kelahiran) {
                     $kelahiran->insertAllRelated();
                     $response['data'][] = $kelahiran;
@@ -159,7 +159,7 @@ class KelahiranController extends Controller
                         ]);
                         unset($kelahiranData['saksiSatu']);
                         $kelahiranData['saksiSatuId'] = $saksiSatu['id'];
-                        
+
                         SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
                     }
                 }

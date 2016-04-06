@@ -206,6 +206,7 @@ return [
         'MorphPenduduk' => 'App\Penduduk',
         'MorphPegawai' => 'App\Pegawai',
         'MorphKelurahan' => 'App\Kelurahan',
+        'MorphInstansiKesehatan' => 'App\InstansiKesehatan',
         'App\User' => 'App\Pengguna',
     ],
 
