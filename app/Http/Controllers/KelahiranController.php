@@ -391,7 +391,7 @@ class KelahiranController extends Controller
                     ];
                 }
             } else if ($user['userable_type'] === 'MorphInstansiKesehatan') {
-                if ($user['userable_id'] !== $kelahiran['kelurahanId']) {
+                if ($user['userable_id'] !== $kelahiran['instansiKesehatanId']) {
                     throw new Exception("Anda tidak memiliki otorisasi untuk mengedit permohonan kelahiran ini.");
                 } else {
                     $kelahiranData = [
