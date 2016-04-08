@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9580ee9d-9f57-466a-adde-f85c1478524f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/PenggunaController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/PenggunaController.php" />
     </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +28,7 @@
       <file leaf-file-name="KelahiranController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="5775">
               <caret line="391" column="17" selection-start-line="391" selection-start-column="17" selection-end-line="391" selection-end-column="17" />
               <folding />
             </state>
@@ -40,9 +39,45 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="15">
+              <first_editor relative-caret-position="-390">
                 <caret line="427" column="4" selection-start-line="427" selection-start-column="4" selection-end-line="427" selection-end-column="4" />
-                <folding />
+                <folding>
+                  <marker date="1459826905390" expanded="true" signature="1940:2719" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="1952:2717" placeholder="{&quot;id&quot;: 1...}" />
+                  <marker date="1459826905390" expanded="true" signature="2159:2713" placeholder="{&quot;id&quot;: 3573041234567890...}" />
+                  <marker date="1459826905390" expanded="true" signature="2948:4320" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="2960:4318" placeholder="[...]" />
+                  <marker date="1459826905390" expanded="true" signature="2966:3761" placeholder="{&quot;id&quot;: 3573041234567890...}" />
+                  <marker date="1459826905390" expanded="true" signature="3534:3755" placeholder="{&quot;id&quot;: 1...}" />
+                  <marker date="1459826905390" expanded="true" signature="3767:4314" placeholder="{&quot;id&quot;: 3573041003950012...}" />
+                  <marker date="1459826905390" expanded="true" signature="4564:5085" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="4576:5083" placeholder="{&quot;id&quot;: 3573041003950012...}" />
+                  <marker date="1459826905390" expanded="true" signature="5421:8472" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="5433:8470" placeholder="[...]" />
+                  <marker date="1459826905390" expanded="true" signature="5439:8466" placeholder="{&quot;id&quot;: 1...}" />
+                  <marker date="1459826905390" expanded="true" signature="6111:6461" placeholder="{&quot;id&quot;: 3279012810930002...}" />
+                  <marker date="1459826905390" expanded="true" signature="6559:7164" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="7180:7785" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="7804:8409" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="8801:11638" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="8813:11636" placeholder="{&quot;id&quot;: 1...}" />
+                  <marker date="1459826905390" expanded="true" signature="9443:9769" placeholder="{&quot;id&quot;: 3279012810930002...}" />
+                  <marker date="1459826905390" expanded="true" signature="9859:10424" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="10438:11003" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="11020:11585" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="11959:12009" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data pengguna.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="12982:13044" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data permohonan kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="14002:14055" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="14291:14344" placeholder="{&quot;message&quot;: &quot;Berhasil menghapus data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="14726:14779" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="15182:15235" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="15394:15458" placeholder="{&quot;message&quot;: &quot;Saksi berhasil melakukan verifikasi kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="15965:16018" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+                  <marker date="1459826905390" expanded="true" signature="16257:17767" placeholder="{...}" />
+                  <marker date="1459826905390" expanded="true" signature="16269:17225" placeholder="{&quot;id&quot;: 5...}" />
+                  <marker date="1459826905390" expanded="true" signature="16895:17221" placeholder="{&quot;id&quot;: 3279012810930006...}" />
+                  <marker date="1459826905390" expanded="true" signature="17240:17765" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+                </folding>
               </first_editor>
               <second_editor />
             </state>
@@ -161,7 +196,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -182,8 +216,9 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -646,15 +681,16 @@
       <workItem from="1459822079329" duration="5640000" />
       <workItem from="1459874640770" duration="411000" />
       <workItem from="1459950822360" duration="368000" />
+      <workItem from="1459995456491" duration="44000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121834000" />
+    <option name="totallyTimeSpent" value="121878000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="24" width="1321" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -667,7 +703,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17713854" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17713854" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -891,7 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
           <caret line="80" column="5" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -934,7 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -955,7 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="61" column="35" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1003,25 +1036,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/KelahiranController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="5775">
           <caret line="391" column="17" selection-start-line="391" selection-start-column="17" selection-end-line="391" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="-390">
+            <caret line="427" column="4" selection-start-line="427" selection-start-column="4" selection-end-line="427" selection-end-column="4" />
+            <folding>
+              <marker date="1459826905390" expanded="true" signature="1940:2719" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="1952:2717" placeholder="{&quot;id&quot;: 1...}" />
+              <marker date="1459826905390" expanded="true" signature="2159:2713" placeholder="{&quot;id&quot;: 3573041234567890...}" />
+              <marker date="1459826905390" expanded="true" signature="2948:4320" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="2960:4318" placeholder="[...]" />
+              <marker date="1459826905390" expanded="true" signature="2966:3761" placeholder="{&quot;id&quot;: 3573041234567890...}" />
+              <marker date="1459826905390" expanded="true" signature="3534:3755" placeholder="{&quot;id&quot;: 1...}" />
+              <marker date="1459826905390" expanded="true" signature="3767:4314" placeholder="{&quot;id&quot;: 3573041003950012...}" />
+              <marker date="1459826905390" expanded="true" signature="4564:5085" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="4576:5083" placeholder="{&quot;id&quot;: 3573041003950012...}" />
+              <marker date="1459826905390" expanded="true" signature="5421:8472" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="5433:8470" placeholder="[...]" />
+              <marker date="1459826905390" expanded="true" signature="5439:8466" placeholder="{&quot;id&quot;: 1...}" />
+              <marker date="1459826905390" expanded="true" signature="6111:6461" placeholder="{&quot;id&quot;: 3279012810930002...}" />
+              <marker date="1459826905390" expanded="true" signature="6559:7164" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="7180:7785" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="7804:8409" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="8801:11638" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="8813:11636" placeholder="{&quot;id&quot;: 1...}" />
+              <marker date="1459826905390" expanded="true" signature="9443:9769" placeholder="{&quot;id&quot;: 3279012810930002...}" />
+              <marker date="1459826905390" expanded="true" signature="9859:10424" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="10438:11003" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="11020:11585" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="11959:12009" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data pengguna.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="12982:13044" placeholder="{&quot;message&quot;: &quot;Berhasil membuat data permohonan kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="14002:14055" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="14291:14344" placeholder="{&quot;message&quot;: &quot;Berhasil menghapus data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="14726:14779" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="15182:15235" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="15394:15458" placeholder="{&quot;message&quot;: &quot;Saksi berhasil melakukan verifikasi kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="15965:16018" placeholder="{&quot;message&quot;: &quot;Berhasil menyimpan data kelahiran.&quot;...}" />
+              <marker date="1459826905390" expanded="true" signature="16257:17767" placeholder="{...}" />
+              <marker date="1459826905390" expanded="true" signature="16269:17225" placeholder="{&quot;id&quot;: 5...}" />
+              <marker date="1459826905390" expanded="true" signature="16895:17221" placeholder="{&quot;id&quot;: 3279012810930006...}" />
+              <marker date="1459826905390" expanded="true" signature="17240:17765" placeholder="{&quot;id&quot;: &quot;3573041003950011&quot;...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="15">
-            <caret line="427" column="4" selection-start-line="427" selection-start-column="4" selection-end-line="427" selection-end-column="4" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>

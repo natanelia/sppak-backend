@@ -24,9 +24,18 @@ class Kelahiran extends Model
         'status',
         'verifikasiSaksi1',
         'verifikasiSaksi2',
+        'verifikasiLurah',
         'verifikasiInstansiKesehatan',
         'verifikasiAdmin',
         'waktuCetakTerakhir',
+    ];
+
+    protected $casts = [
+        'verifikasiSaksi1' => 'boolean',
+        'verifikasiSaksi2' => 'boolean',
+        'verifikasiInstansiKesehatan' => 'boolean',
+        'verifikasiLurah' => 'boolean',
+        'verifikasiAdmin' => 'boolean',
     ];
 
     public function anak() {

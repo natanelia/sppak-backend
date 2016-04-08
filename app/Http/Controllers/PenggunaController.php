@@ -16,7 +16,7 @@ class PenggunaController extends Controller
     public function __construct(Pengguna $pengguna)
     {
         $this->pengguna = $pengguna;
-        $this->middleware('auth.basic', ['only' => ['index', 'show', 'login']]);
+        $this->middleware('auth.basic', ['only' => ['index', 'show', 'login', 'logout']]);
     }
 
     public function index(Request $request)
