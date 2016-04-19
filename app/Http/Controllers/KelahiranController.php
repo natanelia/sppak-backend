@@ -235,7 +235,7 @@ class KelahiranController extends Controller
                             'saksiSatuId' => 'required|numeric',
                             'saksiDuaId' => 'required|numeric',
                             'pemohonId' => 'required|numeric',
-                            'status' => 'required|numeric|in:0,1,2',
+                            'status' => 'required|numeric|in:0,1,2,3',
                         ]);
 
                         if ($validatorKelahiran->fails() || $validatorAnak->fails()) {
@@ -302,7 +302,7 @@ class KelahiranController extends Controller
                 'saksiDua.pendudukId' => 'numeric',
                 'saksiDua.email' => 'email',
                 'pemohonId' => 'numeric',
-                'status' => 'numeric|in:0,1,2',
+                'status' => 'numeric|in:0,1,2,3',
             ]);
 
             if ($validator->fails()) throw new Exception(implode(" ", $validator->getMessageBag()->all()));
@@ -414,7 +414,6 @@ class KelahiranController extends Controller
                 unset($kelahiranData['verifikasiSaksi2']);
                 unset($kelahiranData['verifikasiSaksiInstansiKesehatan']);
                 unset($kelahiranData['verifikasiSaksiLurah']);
-                unset($kelahiranData['status']);
             } else {
                 throw new Exception("Anda tidak memiliki otorisasi untuk mengedit permohonan kelahiran ini.");
             }
@@ -461,9 +460,7 @@ class KelahiranController extends Controller
             }
 
             foreach ($kelahiranData as $key => $value) {
-                if ($key !== 'status') {
-                    $kelahiran[$key] = $value;
-                }
+                $kelahiran[$key] = $value;
             }
 
             if ($kelahiran['verifikasiSaksi1']
