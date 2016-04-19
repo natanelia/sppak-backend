@@ -160,7 +160,9 @@ class KelahiranController extends Controller
                         unset($kelahiranData['saksiSatu']);
                         $kelahiranData['saksiSatuId'] = $saksiSatu['id'];
 
-                        SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                        if ($kelahiranData['status'] == 1) {
+                            SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                        }
                     }
                 }
 
@@ -175,7 +177,9 @@ class KelahiranController extends Controller
                         unset($kelahiranData['saksiDua']);
                         $kelahiranData['saksiDuaId'] = $saksiDua->id;
 
-                        SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak'], $saksiDuaData['email']);
+                        if ($kelahiranData['status'] == 1) {
+                            SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak'], $saksiDuaData['email']);
+                        }
                     }
                 }
             } else if ($user['userable_type'] === 'MorphKelurahan') {
@@ -237,7 +241,7 @@ class KelahiranController extends Controller
                         if ($validatorKelahiran->fails() || $validatorAnak->fails()) {
                             unset($kelahiranData['status']);
 
-                            $failures = new Exception('Data pengajuan belum lengkap'
+                            $failures = new Exception('Data pengajuan belum lengkap. \n'
                                 . implode(" \n", $validatorKelahiran->getMessageBag()->all())
                                 . ' \n'
                                 . implode(" \n", $validatorAnak->getMessageBag()->all())
@@ -273,6 +277,7 @@ class KelahiranController extends Controller
     public function update(Request $request, $id) {
         $user = $request->user();
         try {
+            $errors = [];
             $kelahiranData = $request->all();
             $kelahiranData['id'] = $id;
             $validator = validator()->make($kelahiranData, [
@@ -328,7 +333,6 @@ class KelahiranController extends Controller
                     if (isset($kelahiranData['saksiSatu'])) {
                         $saksiSatu = \App\Saksi::find($kelahiran['saksiSatuId']);
                         $saksiSatuData = $kelahiranData['saksiSatu'];
-
                         if (isset($saksiSatuData['pendudukId']) && isset($saksiSatuData['email'])) {
                             if ($saksiSatu == null) {
                                 $saksiSatu = \App\Saksi::create([
@@ -336,19 +340,22 @@ class KelahiranController extends Controller
                                     'email' => $saksiSatuData['email'],
                                     'token' => Hash::make(str_random(255)),
                                 ]);
-                                SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                                if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                                    SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                                }
                             } else {
                                 if ($saksiSatuData['pendudukId'] != $saksiSatu['pendudukId'] || $saksiSatuData['email'] != $saksiSatu['email']) {
                                     $saksiSatu['pendudukId'] = $saksiSatuData['pendudukId'];
                                     $saksiSatu['email'] = $saksiSatuData['email'];
                                     $saksiSatu['token'] = Hash::make(str_random(255));
                                     $saksiSatu->save();
-                                    SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                                    if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                                        SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                                    }
                                 }
                             }
-
                             unset($kelahiranData['saksiSatu']);
-                            $kelahiranData['saksiSatuId'] = $saksiSatu->id;
+                            $kelahiranData['saksiSatuId'] = $saksiSatu['id'];
                         }
                     }
 
@@ -363,7 +370,9 @@ class KelahiranController extends Controller
                                     'email' => $saksiDuaData['email'],
                                     'token' => Hash::make(str_random(255)),
                                 ]);
-                                SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak']['nama'], $saksiDuaData['email']);
+                                if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                                    SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak']['nama'], $saksiDuaData['email']);
+                                }
                             } else {
                                 if ($saksiDuaData['pendudukId'] != $saksiDua['pendudukId'] || $saksiDuaData['email'] != $saksiDua['email']) {
                                     $saksiDua['pendudukId'] = $saksiDuaData['pendudukId'];
@@ -371,13 +380,14 @@ class KelahiranController extends Controller
                                     $saksiDua['token'] = Hash::make(str_random(255));
                                     $saksiDua->save();
 
-                                    SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak']['nama'], $saksiDuaData['email']);
+                                    if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                                        SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak']['nama'], $saksiDuaData['email']);
+                                    }
                                 }
                             }
 
                             unset($kelahiranData['saksiDua']);
-                            $kelahiranData['saksiDuaId'] = $saksiDua->id;
-
+                            $kelahiranData['saksiDuaId'] = $saksiDua['id'];
                         }
                     }
                 }
@@ -421,6 +431,34 @@ class KelahiranController extends Controller
                 $anak->save();
             }
             unset($kelahiranData['anak']);
+
+            if (isset($kelahiranData['kartuKeluargaId'])) {
+                $keluarga = \App\Keluarga::find($kelahiranData['kartuKeluargaId']);
+                $kelurahan = $keluarga->RT->RW->kelurahan;
+                if ($kelurahan !== null) {
+                    $kelahiranData['kelurahanId'] = $kelurahan['id'];
+                }
+            }
+
+            if (isset($kelahiranData['ayahId'])) {
+                $ayah = \App\Penduduk::find($kelahiranData['ayahId']);
+                if ($ayah !== null) {
+                  if ($ayah['id_keluarga'] != $kelahiranData['kartuKeluargaId']) {
+                    array_push($error, "Ayah tidak terdaftar pada ID Keluarga.");
+                    unset($kelahiranData['ayahId']);
+                  }
+                }
+            }
+
+            if (isset($kelahiranData['ibuId'])) {
+                $ibu = \App\Penduduk::find($kelahiranData['ibuId']);
+                if ($ibu !== null) {
+                  if ($ibu['id_keluarga'] != $kelahiranData['kartuKeluargaId']) {
+                    array_push($error, "Ibu tidak terdaftar pada ID Keluarga.");
+                    unset($kelahiranData['ibuId']);
+                  }
+                }
+            }
 
             foreach ($kelahiranData as $key => $value) {
                 if ($key !== 'status') {
@@ -469,16 +507,23 @@ class KelahiranController extends Controller
                         'status' => 'required|numeric|in:0,1,2',
                     ]);
 
-                    if ($validatorKelahiran->fails() || $validatorAnak->fails()) {
+                    if ($validatorKelahiran->fails() || $validatorAnak->fails() || count($errors) > 0) {
                         $kelahiran->save();
-                        throw new Exception('Data pengajuan belum lengkap'
+                        throw new Exception('Data pengajuan belum lengkap. \n'
                             . implode(" \n", $validatorKelahiran->getMessageBag()->all())
                             . ' \n'
                             . implode(" \n", $validatorAnak->getMessageBag()->all())
+                            . ' \n'
+                            . implode(" \n", $errors)
                         );
                     }
 
                     $kelahiran['status'] = $kelahiranData['status'];
+                } else {
+                  if (count($errors) > 0) {
+                    $kelahiran->save();
+                    throw new Exception(implode(" \n", $errors));
+                  }
                 }
             }
 
@@ -566,14 +611,5 @@ class KelahiranController extends Controller
             'status' => true,
         ];
         $penduduk = \App\Penduduk::create($pendudukData);
-    }
-
-    public function missingMethod($parameters = array())
-    {
-        $statusCode = 404;
-        $response = [
-            'error' => 'URL tidak ditemukan.',
-        ];
-        return response()->json($response, $statusCode);
     }
 }

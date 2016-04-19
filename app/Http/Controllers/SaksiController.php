@@ -14,20 +14,22 @@ class SaksiController extends Controller
     public static function sendVerificationEmail($id, $penduduk, $anak, $emailTo) {
         $saksi = \App\Saksi::findOrFail($id)->first();
         $data = [
-            'penduduk' => $penduduk,
+            'penduduk' => [
+                'nama' => $penduduk['nama'],
+            ],
             'anak' => $anak,
             'url' => action('SaksiController@verifyBirth', [
                 'id' => $saksi['id'],
                 'token' => urlencode($saksi['token']),
             ]),
         ];
+
         Mail::send('emails.verifikasiSaksi', $data, function ($message) use ($emailTo) {
             $message->subject('[SPPAK] Permohonan Verifikasi Kelahiran')
                 ->to($emailTo);
         });
 
         // return response()->json(['message' => "Email terkirim ke saksi dengan NIK $saksi[pendudukId]"], 200);
-        return 200;
     }
 
     public function verifyBirth(Request $request, $id, $token) {

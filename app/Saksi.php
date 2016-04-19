@@ -22,6 +22,6 @@ class Saksi extends Model
      * @var array
      */
     protected $hidden = [
-        'email', 'token'
+        'token'
     ];
 }
