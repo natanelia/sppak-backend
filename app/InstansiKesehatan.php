@@ -15,4 +15,9 @@ class InstansiKesehatan extends Model
   {
       return $this->morphOne('MorphInstansiKesehatan', 'userable');
   }
+
+  public function kota()
+  {
+      return $this->belongsTo(Kota::class, 'kotaId');
+  }
 }

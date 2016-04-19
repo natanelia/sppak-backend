@@ -24,6 +24,7 @@ class InstansiKesehatanController extends Controller
             $instansiKesehatans = \App\InstansiKesehatan::limit($limit)->offset($start)->get();
 
             foreach ($instansiKesehatans as $instansiKesehatan) {
+                $instansiKesehatan->kota;
                 $response['data'][] = $instansiKesehatan;
             }
 
