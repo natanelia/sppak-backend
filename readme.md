@@ -8,7 +8,7 @@ This is not real system and is build for course completion only.
 - Follow installation steps from [Laravel Installation Instructions](https://laravel.com/docs/5.2/installation).
 - Import MySQL database `db_ppl_core`.
 - Create new MySQL database named `sppak`.
-- Rename .env.example to .env. 
+- Rename .env.example to .env.
 - Configure DB_HOST, DB_DATABASE=sppak, DB_USERNAME, DB_PASSWORD.
 - Run `php artisan key:generate`
 - Run `composer install`.
@@ -18,13 +18,14 @@ This is not real system and is build for course completion only.
 
 **Table of Contents**
 - [Semua Pengguna](#semua-pengguna)
+  - [Melakukan login](#melakukan-login)
+  - [Melakukan pendaftaran](#melakukan-pendaftaran)
   - [Mendapatkan data pribadi](#mendapatkan-data-pribadi)
   - [Melihat daftar penduduk](#melihat-daftar-penduduk)
   - [Melihat satu penduduk](#melihat-satu-penduduk)
   - [Melihat daftar permohonan akta kelahiran](#melihat-daftar-permohonan-akta-kelahiran)
   - [Melihat satu permohonan akta kelahiran](#melihat-satu-permohonan-akta-kelahiran)
 - [Penduduk](#penduduk)
-  - [Melakukan pendaftaran](#melakukan-pendaftaran)
   - [Akta kelahiran](#akta-kelahiran)
     - [Membuat permohonan](#membuat-permohonan)
     - [Mengedit permohonan](#mengedit-permohonan)
@@ -40,6 +41,51 @@ This is not real system and is build for course completion only.
   - [Melihat daftar permohonan dari pemohon](#melihat-daftar-permohonan-dari-pemohon)
 
 ### Semua Pengguna
+#### Melakukan login
+##### Request
+```HTTP
+GET /api/v1/pengguna/login HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Authorization: Basic YWNlbEBnbWFpbC5jb206YWNlbGFjZWw=
+```
+
+##### Response
+```json
+{
+  "data": {
+    "id": 4,
+    "email": "acel@gmail.com",
+    "userable_id": "3573041003950013",
+    "userable_type": "MorphPenduduk",
+    "created_at": "2016-04-06 17:31:47",
+    "updated_at": "2016-04-06 17:31:47"
+  }
+}
+```
+
+#### Melakukan pendaftaran
+##### Request
+```HTTP
+POST /api/v1/pengguna HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "email": "email@example.com",
+    "password": "rahasia",
+    "userable_id": "3573041234567890",
+    "userable_type": "MorphPenduduk"
+}
+```
+
+##### Response
+```json
+{
+  "message": "Berhasil membuat data pengguna."
+}
+```
+
 #### Mendapatkan data pribadi
 ##### Request
 ```HTTP
@@ -431,28 +477,6 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 ```
 
 ### Penduduk
-#### Melakukan pendaftaran
-##### Request
-```HTTP
-POST /api/v1/pengguna HTTP/1.1
-Host: localhost:8000
-Content-Type: application/json
-
-{
-    "email": "email@example.com",
-    "password": "rahasia",
-    "userable_id": "3573041234567890",
-    "userable_type": "MorphPenduduk"
-}
-```
-
-##### Response
-```json
-{
-  "message": "Berhasil membuat data pengguna."
-}
-```
-
 #### Akta kelahiran
 ##### Membuat permohonan
 ###### Request
