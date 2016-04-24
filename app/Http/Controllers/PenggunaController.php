@@ -16,7 +16,7 @@ class PenggunaController extends Controller
     public function __construct(Pengguna $pengguna)
     {
         $this->pengguna = $pengguna;
-        $this->middleware('auth.basic', ['only' => ['index', 'show', 'login', 'logout']]);
+        $this->middleware('auth.basic', ['only' => ['index', 'show', 'login', 'logout', 'changePassword', 'changeEmail']]);
     }
 
     public function index(Request $request)
@@ -146,5 +146,69 @@ class PenggunaController extends Controller
     {
         \Auth::logout();
         return response()->json(['message' => 'Logged out.'], 200);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $user = $request->user();
+        try {
+            $penggunaData = $request->all();
+            $validator = validator()->make($penggunaData, [
+                'previousPassword' => 'required',
+                'password' => 'required|min:6',
+            ]);
+
+            if ($validator->fails()) throw new Exception(implode(" ", $validator->getMessageBag()->all()));
+
+            $pengguna = \App\Pengguna::where('email', $user['email'])->first();
+
+            if (!Hash::check($penggunaData['previousPassword'], $pengguna->getAuthPassword())) throw new Exception("Invalid email or password.");
+
+            $pengguna['password'] = Hash::make($penggunaData['password']);
+            $pengguna->save();
+
+            $response = [
+                'message' => 'Berhasil mengubah password.',
+            ];
+
+            $statusCode = 200;
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $response = [
+                'error' => $e->getMessage(),
+            ];
+        } finally {
+            return response()->json($response, $statusCode);
+        }
+    }
+
+    public function changeEmail(Request $request)
+    {
+        $user = $request->user();
+        try {
+            $penggunaData = $request->all();
+            $validator = validator()->make($penggunaData, [
+                'email' => 'required|email|unique:pengguna|max:255',
+            ]);
+
+            if ($validator->fails()) throw new Exception(implode(" ", $validator->getMessageBag()->all()));
+
+            $pengguna = \App\Pengguna::where('email', $user['email'])->first();
+            $pengguna['email'] = $penggunaData['email'];
+            $pengguna->save();
+
+            $response = [
+                'message' => 'Berhasil mengubah alamat email.',
+            ];
+
+            $statusCode = 200;
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $response = [
+                'error' => $e->getMessage(),
+            ];
+        } finally {
+            return response()->json($response, $statusCode);
+        }
     }
 }

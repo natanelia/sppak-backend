@@ -20,6 +20,8 @@ This is not real system and is build for course completion only.
 - [Semua Pengguna](#semua-pengguna)
   - [Melakukan login](#melakukan-login)
   - [Melakukan pendaftaran](#melakukan-pendaftaran)
+  - [Mengubah email](#mengubah-email)
+  - [Mengubah password](#mengubah-password)
   - [Mendapatkan data pribadi](#mendapatkan-data-pribadi)
   - [Melihat daftar penduduk](#melihat-daftar-penduduk)
   - [Melihat satu penduduk](#melihat-satu-penduduk)
@@ -83,6 +85,47 @@ Content-Type: application/json
 ```json
 {
   "message": "Berhasil membuat data pengguna."
+}
+```
+
+#### Mengubah email
+##### Request
+```HTTP
+POST /api/v1/pengguna/email HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206Z29vZ2xl
+
+{
+   "email": "email@example.com",
+}
+```
+
+##### Response
+```json
+{
+  "message": "Berhasil mengubah email."
+}
+```
+
+#### Mengubah password
+##### Request
+```HTTP
+POST /api/v1/pengguna/password HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206Z29vZ2xl
+
+{
+   "previousPassword": "google",
+   "password": "rahasia"
+}
+```
+
+##### Response
+```json
+{
+  "message": "Berhasil mengubah password."
 }
 ```
 
