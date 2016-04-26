@@ -48,7 +48,10 @@ Route::group(['prefix' => env('API_URL', 'api/v1'), 'middleware' => 'cors'], fun
     Route::resource('kota', 'KotaController');
     Route::resource('provinsi', 'ProvinsiController');
 
-    Route::get('saksi/{id}/verifikasi/{token}', 'SaksiController@verifyBirth')
-        ->where('token', '(.*)');
+    Route::get('saksi/{id}/verifikasi/{token}', 'SaksiController@verifyBirth')->where('token', '(.*)');
+
+    Route::get('statistik/crudeBirthRate', 'StatistikController@getStatistikCBR');
+    Route::get('statistik/frekuensiKelahiran', 'StatistikController@getStatistikFrekuensiKelahiran');
+    Route::get('statistik/statusPermohonan', 'StatistikController@getStatistikStatusPermohonan');
 
 });
