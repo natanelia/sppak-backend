@@ -9,7 +9,7 @@ class RT extends Model
     protected $table = 'rt';
     protected $connection = 'db_ppl_core';
 
-    public function RW()
+    public function rw()
     {
         return $this->hasOne(RW::class, 'id', 'id_rw');
     }

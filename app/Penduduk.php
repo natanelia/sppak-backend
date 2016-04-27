@@ -8,7 +8,7 @@ class Penduduk extends Model
     protected $table = 'penduduk';
     protected $connection = 'db_ppl_core';
     public $incrementing = false;
-    
+
     protected $morphClass = 'MorphPenduduk';
 
     protected $dates = ['tanggal_lahir'];
@@ -85,5 +85,14 @@ class Penduduk extends Model
     public function kelahiranOfIbu()
     {
         return $this->hasMany(Kelahiran::class, 'ibuId');
+    }
+
+    public function keluarga()
+    {
+        return $this->hasOne(Keluarga::class, 'id', 'id_keluarga');
+    }
+
+    public function kotaTempatLahir() {
+        return $this->belongsTo(Kota::class, 'tempat_lahir', 'id');
     }
 }

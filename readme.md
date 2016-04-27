@@ -183,58 +183,102 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 ```
 
 ##### Response
+Note: `tempat_lahir` adalah kota tempat penduduk lahir, didefinisikan pada `kota_tempat_lahir`.
 ```json
 {
   "data": [
     {
-      "id": 3573041234567890,
+      "id": "0037010903950000",
       "nama": "Natan",
-      "tanggal_lahir": "1995-03-10",
-      "tempat_lahir": "37",
-      "jenis_kelamin": "",
-      "id_keluarga": null,
-      "id_ayah": null,
-      "id_ibu": null,
+      "tanggal_lahir": "1995-03-09 00:00:00",
+      "tempat_lahir": 4,
+      "jenis_kelamin": "l",
+      "id_keluarga": "1",
+      "id_ayah": "3573041003950012",
+      "id_ibu": "3573041003950011",
       "hubungan_keluarga": "Anak",
-      "golongan_darah": "B",
-      "agama": "Kristen",
-      "wni": "1",
-      "status_perkawinan": "",
-      "pekerjaan": "Mahasiswa",
-      "pendidikan": "Sekolah Menengah",
+      "golongan_darah": "A",
+      "agama": "Islam",
+      "wni": 1,
+      "status_perkawinan": "Belum Kawin",
+      "pekerjaan": null,
+      "pendidikan": null,
       "id_izin_tetap": null,
       "id_passport": null,
-      "created_at": "2016-03-31 14:48:42",
-      "status": "1",
-      "pengguna": {
+      "created_at": "2016-04-19 11:35:24",
+      "status": 1,
+      "keluarga": {
         "id": 1,
-        "email": "email@example.com",
-        "userable_id": "3573041234567890",
-        "userable_type": "MorphPenduduk",
-        "created_at": "2016-03-31 14:52:11",
-        "updated_at": null
+        "alamat": "Jalan Ciumbuleuit 51/155A",
+        "id_rt": 1,
+        "created_at": "2016-03-31 14:50:42",
+        "status": 1,
+        "rt": {
+          "id": 1,
+          "nama": "001",
+          "alamat_kantor": "Jalan CiumbuRT 121",
+          "id_pengurus": "3573041003950011",
+          "id_rw": 1,
+          "created_at": "2016-03-31 14:49:27",
+          "updated_at": null,
+          "status": 1,
+          "rw": {
+            "id": 1,
+            "nama": "",
+            "alamat_kantor": "",
+            "id_pengurus": "3573041003950011",
+            "id_kelurahan": 1,
+            "created_at": "2016-03-31 14:49:23",
+            "updated_at": null,
+            "status": 1,
+            "kelurahan": {
+              "id": 1,
+              "nama": "Pisang Candi",
+              "alamat_kantor": "Jalan Gelut 11",
+              "id_pengurus": "3573041003950011",
+              "id_kecamatan": 1,
+              "created_at": "2016-03-31 14:49:17",
+              "updated_at": null,
+              "status": 1,
+              "kecamatan": {
+                "id": 1,
+                "nama": "Malang Sekali",
+                "alamat_kantor": "Jalan Tinombala 22",
+                "id_pengurus": "3573041003950011",
+                "id_kota": 37,
+                "status": 1,
+                "kota": {
+                  "id": 37,
+                  "nama": "Kota Bandung",
+                  "alamat_kantor": "Jalan Ciumbuleuit XX",
+                  "id_pengurus": null,
+                  "id_provinsi": null,
+                  "status": 0,
+                  "provinsi": null
+                }
+              }
+            }
+          }
+        }
+      },
+      "kota_tempat_lahir": {
+        "id": 4,
+        "nama": "Bandung",
+        "alamat_kantor": "Kantor Walikota Jl.Wastukencana No.2,Bandung",
+        "id_pengurus": "3573041003950011",
+        "id_provinsi": 32,
+        "status": 1,
+        "provinsi": {
+          "id": 32,
+          "nama": "Jawa Barat",
+          "alamat_kantor": "JL. DIPONEGORO NO. 22 BANDUNG",
+          "id_pengurus": "3573041003950011",
+          "status": 1
+        }
       }
     },
     {
-      "id": 3573041003950012,
-      "nama": "Juol",
-      "tanggal_lahir": "1995-05-20",
-      "tempat_lahir": "37",
-      "jenis_kelamin": "l",
-      "id_keluarga": "1",
-      "id_ayah": "3573041234567890",
-      "id_ibu": null,
-      "hubungan_keluarga": "Cucu",
-      "golongan_darah": "A",
-      "agama": "Islam",
-      "wni": "1",
-      "status_perkawinan": "",
-      "pekerjaan": "Gabut",
-      "pendidikan": "SD",
-      "id_izin_tetap": null,
-      "id_passport": null,
-      "created_at": "2016-04-02 09:46:08",
-      "status": "1"
+        "...": "..."
     }
   ]
 }
@@ -250,28 +294,98 @@ Authorization: Basic bmF0YW5lbGlhN0BnbWFpbC5jb206cmFoYXNpYQ==
 ```
 
 ##### Response
+Note: `tempat_lahir` adalah kota tempat penduduk lahir, didefinisikan pada `kota_tempat_lahir`.
 ```json
 {
   "data": {
-    "id": 3573041003950012,
-    "nama": "Juol",
-    "tanggal_lahir": "1995-05-20",
-    "tempat_lahir": "37",
-    "jenis_kelamin": "l",
-    "id_keluarga": "1",
-    "id_ayah": "3573041234567890",
+    "id": "3573041003950012",
+    "nama": "Natan",
+    "tanggal_lahir": "1995-03-10 00:00:00",
+    "tempat_lahir": 37,
+    "jenis_kelamin": "",
+    "id_keluarga": "2",
+    "id_ayah": null,
     "id_ibu": null,
-    "hubungan_keluarga": "Cucu",
-    "golongan_darah": "A",
-    "agama": "Islam",
-    "wni": "1",
+    "hubungan_keluarga": "Anak",
+    "golongan_darah": "B",
+    "agama": "Kristen",
+    "wni": 1,
     "status_perkawinan": "",
-    "pekerjaan": "Gabut",
-    "pendidikan": "SD",
+    "pekerjaan": "Mahasiswa",
+    "pendidikan": "Sekolah Menengah",
     "id_izin_tetap": null,
     "id_passport": null,
-    "created_at": "2016-04-02 09:46:08",
-    "status": "1"
+    "created_at": "2016-03-31 14:48:42",
+    "status": 1,
+    "keluarga": {
+      "id": 2,
+      "alamat": "Baker Street 221B",
+      "id_rt": 78,
+      "created_at": "2016-04-04 23:54:01",
+      "status": 1,
+      "rt": {
+        "id": 78,
+        "nama": "MAR",
+        "alamat_kantor": "3685 Et St.",
+        "id_pengurus": "3573041003950011",
+        "id_rw": 9,
+        "created_at": "2006-08-16 01:09:07",
+        "updated_at": null,
+        "status": 0,
+        "rw": {
+          "id": 9,
+          "nama": "HB",
+          "alamat_kantor": "303-5253 Posuere Ave",
+          "id_pengurus": "3573041003950011",
+          "id_kelurahan": 19,
+          "created_at": "2012-04-06 00:50:04",
+          "updated_at": null,
+          "status": 0,
+          "kelurahan": {
+            "id": 19,
+            "nama": "Buteshire",
+            "alamat_kantor": "P.O. Box 865, 2844 Eget Av.",
+            "id_pengurus": "3573041003950011",
+            "id_kecamatan": 22,
+            "created_at": "2016-12-31 21:32:53",
+            "updated_at": null,
+            "status": 0,
+            "kecamatan": {
+              "id": 22,
+              "nama": "Majalaya",
+              "alamat_kantor": "P.O. Box 126, 4054 Mattis. Av.",
+              "id_pengurus": "3573041003950011",
+              "id_kota": 4,
+              "status": 0,
+              "kota": {
+                "id": 4,
+                "nama": "Bandung",
+                "alamat_kantor": "Kantor Walikota Jl.Wastukencana No.2,Bandung",
+                "id_pengurus": "3573041003950011",
+                "id_provinsi": 32,
+                "status": 1,
+                "provinsi": {
+                  "id": 32,
+                  "nama": "Jawa Barat",
+                  "alamat_kantor": "JL. DIPONEGORO NO. 22 BANDUNG",
+                  "id_pengurus": "3573041003950011",
+                  "status": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "kota_tempat_lahir": {
+      "id": 37,
+      "nama": "Kota Bandung",
+      "alamat_kantor": "Jalan Ciumbuleuit XX",
+      "id_pengurus": null,
+      "id_provinsi": null,
+      "status": 0,
+      "provinsi": null
+    }
   }
 }
 ```
