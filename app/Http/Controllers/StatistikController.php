@@ -31,12 +31,10 @@ class StatistikController extends Controller
             $penduduks = \App\Penduduk::where('status', 1)->get();
 
             //mendaftar semua tanggal lahir
-            $format = 'Y-m-d';
             $tanggalLahirs = [];
             foreach ($penduduks as $penduduk) {
                 $tanggalLahirs[] = $penduduk['tanggal_lahir'];
             }
-            //die(json_encode($tanggalLahirs[0]->year, JSON_PRETTY_PRINT));
 
             //mengisi labels
             for ($i = $startYear; $i <= $endYear; $i++) {
@@ -86,10 +84,284 @@ class StatistikController extends Controller
     }
 
     public function getStatistikFrekuensiKelahiran(Request $request) {
+        $timeUnit = $request->input('timeUnit') ? $request->input('timeUnit') : 'day';
+        $startDate = $request->input('startDate');
+        $endDate = $request->input('endDate');
 
+        $startDate = Carbon::createFromFormat('Y-m-d', $startDate);
+        $endDate = Carbon::createFromFormat('Y-m-d', $endDate);
+
+        try {
+            $statusCode = 200;
+
+            $response = [
+                'data' => [[]],
+                'series' => [],
+                'labels' => [],
+            ];
+
+            switch ($timeUnit) {
+                case 'day':
+                    $startDate = $startDate->startOfDay();
+                    $endDate = $endDate->endOfDay();
+
+                    $penduduks = \App\Penduduk
+                        ::where('status', 1)
+                        ->where('tanggal_lahir', '>=', $startDate)
+                        ->where('tanggal_lahir', '<=', $endDate)
+                        ->get();
+
+                    $iterator = $startDate->copy();
+                    $i = 0;
+                    while ($iterator->diffInDays($endDate) !== 0) {
+                        $response['labels'][] = $iterator->format('j M Y');
+                        $response['data'][0][] = 0;
+
+                        foreach ($penduduks as $penduduk) {
+                            if ($penduduk['tanggal_lahir']->day === $iterator->day && $penduduk['tanggal_lahir']->month === $iterator->month && $penduduk['tanggal_lahir']->year === $iterator->year) {
+                                $response['data'][0][$i]++;
+                            }
+                        }
+
+                        $iterator->addDay();
+                        $i++;
+                    }
+                    $response['labels'][] = $iterator->format('j M Y');
+                    $response['data'][0][] = 0;
+
+                    foreach ($penduduks as $penduduk) {
+                        if ($penduduk['tanggal_lahir']->day === $iterator->day && $penduduk['tanggal_lahir']->month === $iterator->month && $penduduk['tanggal_lahir']->year === $iterator->year) {
+                            $response['data'][0][$i]++;
+                        }
+                    }
+
+                    break;
+                case 'month':
+                    $startDate = $startDate->startOfMonth();
+                    $endDate = $endDate->endOfMonth();
+
+                    $penduduks = \App\Penduduk
+                        ::where('status', 1)
+                        ->where('tanggal_lahir', '>=', $startDate)
+                        ->where('tanggal_lahir', '<=', $endDate)
+                        ->get();
+
+                    $iterator = $startDate->copy();
+                    $i = 0;
+                    while ($iterator->diffInMonths($endDate) !== 0) {
+                        $response['labels'][] = $iterator->format('M Y');
+                        $response['data'][0][] = 0;
+
+                        foreach ($penduduks as $penduduk) {
+                            if ($penduduk['tanggal_lahir']->month === $iterator->month && $penduduk['tanggal_lahir']->year === $iterator->year) {
+                                $response['data'][0][$i]++;
+                            }
+                        }
+
+                        $iterator->addMonth();
+                        $i++;
+                    }
+                    $response['labels'][] = $iterator->format('M Y');
+                    $response['data'][0][] = 0;
+
+                    foreach ($penduduks as $penduduk) {
+                        if ($penduduk['tanggal_lahir']->month === $iterator->month && $penduduk['tanggal_lahir']->year === $iterator->year) {
+                            $response['data'][0][$i]++;
+                        }
+                    }
+
+                    break;
+                 case 'year':
+                    $startDate = $startDate->startOfYear();
+                    $endDate = $endDate->endOfYear();
+
+                    $penduduks = \App\Penduduk
+                        ::where('status', 1)
+                        ->where('tanggal_lahir', '>=', $startDate)
+                        ->where('tanggal_lahir', '<=', $endDate)
+                        ->get();
+
+                    $iterator = $startDate->copy();
+                    $i = 0;
+                    while ($iterator->diffInYears($endDate) !== 0) {
+                        $response['labels'][] = $iterator->format('Y');
+                        $response['data'][0][] = 0;
+
+                        foreach ($penduduks as $penduduk) {
+                            if ($penduduk['tanggal_lahir']->year === $iterator->year) {
+                                $response['data'][0][$i]++;
+                            }
+                        }
+
+                        $iterator->addYear();
+                        $i++;
+                    }
+                    $response['labels'][] = $iterator->format('Y');
+                    $response['data'][0][] = 0;
+
+                    foreach ($penduduks as $penduduk) {
+                        if ($penduduk['tanggal_lahir']->year === $iterator->year) {
+                            $response['data'][0][$i]++;
+                        }
+                    }
+
+                    break;
+            }
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $response = [
+                'error' => $e->getMessage(),
+            ];
+        } finally {
+            return response()->json($response, $statusCode);
+        }
     }
 
     public function getStatistikStatusPermohonan(Request $request) {
+        $timeUnit = $request->input('timeUnit') ? $request->input('timeUnit') : 'day';
+        $startDate = $request->input('startDate');
+        $endDate = $request->input('endDate');
 
+        $startDate = Carbon::createFromFormat('Y-m-d', $startDate);
+        $endDate = Carbon::createFromFormat('Y-m-d', $endDate);
+
+        try {
+            $statusCode = 200;
+
+            $response = [
+                'data' => [[],[],[]],
+                'series' => [
+                    'Belum Diajukan',
+                    'Diajukan',
+                    'Diterima',
+                    'Ditolak',
+                ],
+                'labels' => [],
+            ];
+
+            switch ($timeUnit) {
+                case 'day':
+                    $startDate = $startDate->startOfDay();
+                    $endDate = $endDate->endOfDay();
+
+                    $kelahirans = \App\Kelahiran
+                        ::where('updated_at', '>=', $startDate)
+                        ->where('updated_at', '<=', $endDate)
+                        ->get();
+
+                    $iterator = $startDate->copy();
+                    $i = 0;
+                    while ($iterator->diffInDays($endDate) !== 0) {
+                        $response['labels'][] = $iterator->format('j M Y');
+                        for ($j = 0; $j < count($response['series']); $j++) {
+                            $response['data'][$j][] = 0;
+                        }
+
+                        foreach ($kelahirans as $kelahiran) {
+                            if ($kelahiran['updated_at']->day === $iterator->day && $kelahiran['updated_at']->month === $iterator->month && $kelahiran['updated_at']->year === $iterator->year) {
+                                $response['data'][(int)$kelahiran['status']][$i]++;
+                            }
+                        }
+
+                        $iterator->addDay();
+                        $i++;
+                    }
+                    $response['labels'][] = $iterator->format('j M Y');
+                    for ($j = 0; $j < count($response['series']); $j++) {
+                        $response['data'][$j][] = 0;
+                    }
+
+                    foreach ($kelahirans as $kelahiran) {
+                        if ($kelahiran['updated_at']->day === $iterator->day && $kelahiran['updated_at']->month === $iterator->month && $kelahiran['updated_at']->year === $iterator->year) {
+                            $response['data'][(int)$kelahiran['status']][$i]++;
+                        }
+                    }
+
+                    break;
+                case 'month':
+                    $startDate = $startDate->startOfMonth();
+                    $endDate = $endDate->endOfMonth();
+
+                    $kelahirans = \App\Kelahiran
+                        ::where('updated_at', '>=', $startDate)
+                        ->where('updated_at', '<=', $endDate)
+                        ->get();
+
+                    $iterator = $startDate->copy();
+                    $i = 0;
+                    while ($iterator->diffInMonths($endDate) !== 0) {
+                        $response['labels'][] = $iterator->format('M Y');
+                        for ($j = 0; $j < count($response['series']); $j++) {
+                            $response['data'][$j][] = 0;
+                        }
+
+                        foreach ($kelahirans as $kelahiran) {
+                            if ($kelahiran['updated_at']->month === $iterator->month && $kelahiran['updated_at']->year === $iterator->year) {
+                                $response['data'][(int)$kelahiran['status']][$i]++;
+                            }
+                        }
+
+                        $iterator->addMonth();
+                        $i++;
+                    }
+                    $response['labels'][] = $iterator->format('M Y');
+                    for ($j = 0; $j < count($response['series']); $j++) {
+                        $response['data'][$j][] = 0;
+                    }
+
+                    foreach ($kelahirans as $kelahiran) {
+                        if ($kelahiran['updated_at']->month === $iterator->month && $kelahiran['updated_at']->year === $iterator->year) {
+                            $response['data'][(int)$kelahiran['status']][$i]++;
+                        }
+                    }
+
+                    break;
+                 case 'year':
+                    $startDate = $startDate->startOfYear();
+                    $endDate = $endDate->endOfYear();
+
+                    $kelahirans = \App\Kelahiran
+                        ::where('updated_at', '>=', $startDate)
+                        ->where('updated_at', '<=', $endDate)
+                        ->get();
+
+                    $iterator = $startDate->copy();
+                    $i = 0;
+                    while ($iterator->diffInYears($endDate) !== 0) {
+                        $response['labels'][] = $iterator->format('Y');
+                        for ($j = 0; $j < count($response['series']); $j++) {
+                            $response['data'][$j][] = 0;
+                        }
+
+                        foreach ($kelahirans as $kelahiran) {
+                            if ($kelahiran['updated_at']->year === $iterator->year) {
+                                $response['data'][(int)$kelahiran['status']][$i]++;
+                            }
+                        }
+
+                        $iterator->addYear();
+                        $i++;
+                    }
+                    $response['labels'][] = $iterator->format('Y');
+                    for ($j = 0; $j < count($response['series']); $j++) {
+                        $response['data'][$j][] = 0;
+                    }
+
+                    foreach ($kelahirans as $kelahiran) {
+                        if ($penduduk['updated_at']->year === $iterator->year) {
+                            $response['data'][(int)$kelahiran['status']][$i]++;
+                        }
+                    }
+
+                    break;
+            }
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $response = [
+                'error' => $e->getMessage(),
+            ];
+        } finally {
+            return response()->json($response, $statusCode);
+        }
     }
 }

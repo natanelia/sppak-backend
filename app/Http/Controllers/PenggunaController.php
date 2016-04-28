@@ -60,7 +60,7 @@ class PenggunaController extends Controller
 
                 if ($pengguna === null) throw new Exception("Pengguna dengan id = $id tidak ditemukan.");
 
-                $userType = $pengguna['userable_type'];
+                $userType = $user['userable_type'];
                 if ($userType !== 'MorphPegawai') {
                     if ($user['id'] == $id) {
                         $isAuthorized = true;
