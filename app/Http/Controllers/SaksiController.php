@@ -12,7 +12,7 @@ use App\Http\Requests;
 class SaksiController extends Controller
 {
     public static function sendVerificationEmail($id, $penduduk, $anak, $emailTo) {
-        $saksi = \App\Saksi::findOrFail($id)->first();
+        $saksi = \App\Saksi::findOrFail($id);
         $data = [
             'penduduk' => [
                 'nama' => $penduduk['nama'],

@@ -328,6 +328,7 @@ class KelahiranController extends Controller
 
                     if ($kelahiran['status'] != 0) {
                         unset($kelahiranData['status']);
+                        throw new Exception("Anda tidak dapat mengubah permohonan yang sudah diajukan");
                     }
 
                     if (isset($kelahiranData['saksiSatu'])) {
@@ -349,9 +350,9 @@ class KelahiranController extends Controller
                                     $saksiSatu['email'] = $saksiSatuData['email'];
                                     $saksiSatu['token'] = Hash::make(str_random(255));
                                     $saksiSatu->save();
-                                    if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
-                                        SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
-                                    }
+                                }
+                                if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                                    SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
                                 }
                             }
                             unset($kelahiranData['saksiSatu']);
@@ -379,10 +380,9 @@ class KelahiranController extends Controller
                                     $saksiDua['email'] = $saksiDuaData['email'];
                                     $saksiDua['token'] = Hash::make(str_random(255));
                                     $saksiDua->save();
-
-                                    if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
-                                        SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak']['nama'], $saksiDuaData['email']);
-                                    }
+                                }
+                                if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                                    SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak'], $saksiDuaData['email']);
                                 }
                             }
 
@@ -392,7 +392,7 @@ class KelahiranController extends Controller
                     }
                 }
             } else if ($user['userable_type'] === 'MorphKelurahan') {
-                if ($user['userable_id'] !== $kelahiran['kelurahanId']) {
+                if ($user['userable_id'] != $kelahiran['kelurahanId']) {
                     throw new Exception("Anda tidak memiliki otorisasi untuk mengedit permohonan kelahiran ini.");
                 } else {
                     $kelahiranData = [
@@ -401,7 +401,7 @@ class KelahiranController extends Controller
                     ];
                 }
             } else if ($user['userable_type'] === 'MorphInstansiKesehatan') {
-                if ($user['userable_id'] !== $kelahiran['instansiKesehatanId']) {
+                if ($user['userable_id'] != $kelahiran['instansiKesehatanId']) {
                     throw new Exception("Anda tidak memiliki otorisasi untuk mengedit permohonan kelahiran ini.");
                 } else {
                     $kelahiranData = [
@@ -460,7 +460,9 @@ class KelahiranController extends Controller
             }
 
             foreach ($kelahiranData as $key => $value) {
-                $kelahiran[$key] = $value;
+                if ($key != 'status') {
+                    $kelahiran[$key] = $value;
+                }
             }
 
             if ($kelahiran['verifikasiSaksi1']
@@ -520,6 +522,8 @@ class KelahiranController extends Controller
                   if (count($errors) > 0) {
                     $kelahiran->save();
                     throw new Exception(implode(" \n", $errors));
+                  } else {
+                    $kelahiran['status'] = $kelahiranData['status'];
                   }
                 }
             }
