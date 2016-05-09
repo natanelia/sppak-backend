@@ -104,6 +104,16 @@ class PenggunaController extends Controller
             if ($validator->fails()) throw new Exception(implode(" ", $validator->getMessageBag()->all()));
 
             $dataPengguna = $request->all();
+
+            $userableId = $dataPengguna['userable_id'];
+            if ($dataPengguna['userable_type'] == 'MorphPenduduk') {
+                $penduduk = \App\Penduduk::find($userableId);
+                if ($penduduk === null || $penduduk['nama'] != $dataPengguna['name']) {
+                    throw new Exception("NIK tidak sesuai dengan nama Anda atau NIK Anda belum terdaftar. Harap periksa kembali dengan teliti.");
+                }
+            }
+            unset($dataPengguna['name']);
+
             $dataPengguna['password'] = Hash::make($dataPengguna['password']);
             $this->pengguna->create($dataPengguna);
 
