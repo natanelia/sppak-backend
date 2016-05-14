@@ -31,4 +31,8 @@ class Anak extends Model
     public function kelahiran() {
         return $this->hasOne(\App\Kelahiran::class, 'anakId');
     }
+
+    public function kotaLahir() {
+        return $this->belongsTo(\App\Kota::class, 'kotaLahirId');
+    }
 }

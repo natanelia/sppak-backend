@@ -74,8 +74,15 @@ class Kelahiran extends Model
         return $this->hasOne(Saksi::class, 'id', 'saksiDuaId');
     }
 
+    public function pendudukId() {
+      return $this->hasOne(KelahiranPenduduk::class, 'kelahiranId', 'id');
+    }
+
     public function insertAllRelated() {
         $this->anak;
+        if ($this->anak !== null) {
+          $this->anak->kotaLahir;
+        }
         $this->kelurahan;
         $this->instansiKesehatan;
         $this->keluarga;
@@ -85,4 +92,14 @@ class Kelahiran extends Model
         $this->saksiSatu;
         $this->saksiDua;
     }
+}
+
+class KelahiranPenduduk extends Model
+{
+    protected $table = 'kelahiranPenduduk';
+    protected $connection = 'mysql';
+    protected $fillable = [
+        'kelahiranId',
+        'pendudukId',
+    ];
 }

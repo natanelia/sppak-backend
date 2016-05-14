@@ -66,6 +66,7 @@ class KelahiranController extends Controller
 
                 foreach ($kelahirans as $kelahiran) {
                     $kelahiran->insertAllRelated();
+                    $kelahiran->pendudukId;
                     $response['data'][] = $kelahiran;
                 }
             } else {
@@ -89,12 +90,14 @@ class KelahiranController extends Controller
             $statusCode = 200;
 
             $kelahiran->insertAllRelated();
+            $kelahiran->pendudukId;
             $response = [
                 'data' => $kelahiran,
             ];
         } catch (Exception $e) {
             $response = [
                 'error' => 'Kelahiran tidak ditemukan.',
+                'message' => $e->getMessage(),
             ];
             $statusCode = 404;
         } finally {
@@ -624,8 +627,9 @@ class KelahiranController extends Controller
     {
         $anak = $kelahiran->anak;
         $ayah = \App\Penduduk::findOrFail($kelahiran['ayahId']);
+        $newId = \App\Penduduk::generateId($kelahiran['kelurahanId'], $anak['waktuLahir']);
         $pendudukData = [
-            'id' => \App\Penduduk::generateId($kelahiran['kelurahanId'], $anak['waktuLahir']),
+            'id' => $newId,
             'nama' => $anak['nama'],
             'tanggal_lahir' => $anak['waktuLahir'],
             'tempat_lahir' => $anak['kotaLahirId'],
@@ -641,5 +645,11 @@ class KelahiranController extends Controller
             'status' => true,
         ];
         $penduduk = \App\Penduduk::create($pendudukData);
+
+        $kelahiranPendudukData = [
+          'kelahiranId' => $kelahiran['id'],
+          'pendudukId' => $newId,
+        ];
+        $kelahiranPenduduk = \App\KelahiranPenduduk::create($kelahiranPendudukData);
     }
 }
