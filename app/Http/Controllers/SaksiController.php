@@ -13,15 +13,17 @@ class SaksiController extends Controller
 {
     public static function sendVerificationEmail($id, $penduduk, $anak, $emailTo) {
         $saksi = \App\Saksi::findOrFail($id);
+        $pid = \App\Kelahiran::findOrFail($anak['id']);
         $data = [
             'penduduk' => [
                 'nama' => $penduduk['nama'],
             ],
             'anak' => $anak,
-            'url' => action('SaksiController@verifyBirth', [
-                'id' => $saksi['id'],
-                'token' => urlencode($saksi['token']),
-            ]),
+            //'url' => action('www.sppak.dev', [
+                //'id' => $saksi['id'],
+                //'token' => urlencode($saksi['token']),
+            //]),
+            'url' => 'http://www.sppak.dev/#/saksi?id=' . $saksi['id'] . '&token=' . urlencode($saksi['token']) . '&pid=' . $pid['id'],
         ];
 
         Mail::send('emails.verifikasiSaksi', $data, function ($message) use ($emailTo) {
