@@ -11,9 +11,8 @@ use App\Http\Requests;
 
 class SaksiController extends Controller
 {
-    public static function sendVerificationEmail($id, $penduduk, $anak, $emailTo) {
+    public static function sendVerificationEmail($id, $penduduk, $anak, $emailTo, $kelahiranId) {
         $saksi = \App\Saksi::findOrFail($id);
-        $pid = \App\Kelahiran::findOrFail($anak['id']);
         $data = [
             'penduduk' => [
                 'nama' => $penduduk['nama'],
@@ -23,7 +22,7 @@ class SaksiController extends Controller
                 //'id' => $saksi['id'],
                 //'token' => urlencode($saksi['token']),
             //]),
-            'url' => 'http://www.sppak.dev/#/saksi?id=' . $saksi['id'] . '&token=' . urlencode($saksi['token']) . '&pid=' . $pid['id'],
+            'url' => 'http://www.sppak.dev/#/saksi?id=' . $saksi['id'] . '&token=' . urlencode($saksi['token']) . '&pid=' . $kelahiranId,
         ];
 
         Mail::send('emails.verifikasiSaksi', $data, function ($message) use ($emailTo) {

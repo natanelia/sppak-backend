@@ -352,7 +352,7 @@ class KelahiranController extends Controller
                                     $saksiSatu->save();
                                 }
                                 if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
-                                    SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email']);
+                                    SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email'], $kelahiran['id']);
                                 }
                             }
                             unset($kelahiranData['saksiSatu']);
@@ -382,7 +382,7 @@ class KelahiranController extends Controller
                                     $saksiDua->save();
                                 }
                                 if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
-                                    SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak'], $saksiDuaData['email']);
+                                    SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak'], $saksiDuaData['email'], $kelahiran['id']);
                                 }
                             }
 
