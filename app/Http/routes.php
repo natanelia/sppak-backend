@@ -54,4 +54,5 @@ Route::group(['prefix' => env('API_URL', 'api/v1'), 'middleware' => 'cors'], fun
     Route::get('statistik/frekuensiKelahiran', 'StatistikController@getStatistikFrekuensiKelahiran');
     Route::get('statistik/statusPermohonan', 'StatistikController@getStatistikStatusPermohonan');
 
+    Route::get('test', 'Test@index');
 });

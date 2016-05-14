@@ -439,25 +439,54 @@ class KelahiranController extends Controller
                 }
             }
 
+            $ktpApiUrl = env('KTP_BASE_API_URL') . '/permohonan_ktps';
+            $ktpByNikUrl = $ktpApiUrl . "/ktp-by-nik";
+
             if (isset($kelahiranData['ayahId'])) {
-                $ayah = \App\Penduduk::find($kelahiranData['ayahId']);
-                if ($ayah !== null) {
-                  if ($ayah['id_keluarga'] != $kelahiranData['kartuKeluargaId']) {
-                    array_push($error, "Ayah tidak terdaftar pada ID Keluarga.");
+                $res = json_decode(file_get_contents($ktpByNikUrl . '/' . $kelahiranData['ayahId']), true);
+                if ($res['data'] !== 'No data available') {
+                    $ayah = \App\Penduduk::find($kelahiranData['ayahId']);
+                    if ($ayah !== null) {
+                      if ($ayah['id_keluarga'] != $kelahiranData['kartuKeluargaId']) {
+                        array_push($errors, "Ayah tidak terdaftar pada KK Nomor $kelahiranData[kartuKeluargaId].");
+                        unset($kelahiranData['ayahId']);
+                      } else if ($ayah['jenis_kelamin'] != 'l') {
+                        array_push($errors, "Ayah harus berjenis kelamin pria.");
+                        unset($kelahiranData['ayahId']);
+                      }
+                    }
+                } else {
+                    array_push($errors, "Ayah belum memiliki KTP.");
                     unset($kelahiranData['ayahId']);
-                  }
                 }
             }
 
             if (isset($kelahiranData['ibuId'])) {
-                $ibu = \App\Penduduk::find($kelahiranData['ibuId']);
-                if ($ibu !== null) {
-                  if ($ibu['id_keluarga'] != $kelahiranData['kartuKeluargaId']) {
-                    array_push($error, "Ibu tidak terdaftar pada ID Keluarga.");
-                    unset($kelahiranData['ibuId']);
+                $res = json_decode(file_get_contents($ktpByNikUrl . '/' . $kelahiranData['ibuId']), true);
+                if ($res['data'] !== 'No data available') {
+                  $ibu = \App\Penduduk::find($kelahiranData['ibuId']);
+                  if ($ibu !== null) {
+                    if ($ibu['id_keluarga'] != $kelahiranData['kartuKeluargaId']) {
+                      array_push($errors, "Ibu tidak terdaftar pada KK Nomor $kelahiranData[kartuKeluargaId].");
+                      unset($kelahiranData['ibuId']);
+                    } else if ($ibu['jenis_kelamin'] != 'p') {
+                      array_push($errors, "Ibu harus berjenis kelamin wanita.");
+                      unset($kelahiranData['ibuId']);
+                    }
                   }
+                } else {
+                    array_push($errors, "Ibu belum memiliki KTP.");
+                    unset($kelahiranData['ibuId']);
+                }
+
+                if ($kelahiranData['ibuId'] === $saksiSatuData['pendudukId']
+                  || $kelahiranData['ibuId'] === $saksiDuaData['pendudukId']
+                  || $kelahiranData['ayahId'] === $saksiSatuData['pendudukId']
+                  || $kelahiranData['ayahId'] === $saksiDuaData['pendudukId']) {
+                  array_push($errors, "Ayah dan Ibu tidak boleh menjadi saksi.");
                 }
             }
+
 
             foreach ($kelahiranData as $key => $value) {
                 if ($key != 'status') {

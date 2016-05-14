@@ -63,8 +63,10 @@ class PendudukController extends Controller
             $statusCode = 200;
 
             $penduduk = $this->penduduk->find($id);
-            $penduduk->keluarga->rt->rw->kelurahan->kecamatan->kota->provinsi;
-            $penduduk->kotaTempatLahir->provinsi;
+            if ($penduduk !== null) {
+              $penduduk->keluarga->rt->rw->kelurahan->kecamatan->kota->provinsi;
+              $penduduk->kotaTempatLahir->provinsi;
+            }
 
             // if ($isAuthorized) $penduduk->pengguna;
             $response = [
@@ -74,7 +76,8 @@ class PendudukController extends Controller
         } catch (Exception $e) {
             $statusCode = 400;
             $response = [
-                'error' => $e->getMessage(),
+                'error' => $e,
+                'message' => $e->getMessage(),
             ];
         } finally {
             return response()->json($response, $statusCode);
