@@ -22,7 +22,7 @@ class SaksiController extends Controller
                 //'id' => $saksi['id'],
                 //'token' => urlencode($saksi['token']),
             //]),
-            'url' => env(FRONTEND_BASE_URL) + '/#/saksi?id=' . $saksi['id'] . '&token=' . urlencode($saksi['token']) . '&pid=' . $kelahiranId,
+            'url' => env('FRONTEND_BASE_URL') . '/#/saksi?id=' . $saksi['id'] . '&token=' . urlencode($saksi['token']) . '&pid=' . $kelahiranId,
         ];
 
         Mail::send('emails.verifikasiSaksi', $data, function ($message) use ($emailTo) {
