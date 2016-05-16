@@ -40,8 +40,8 @@ class KelahiranController extends Controller
                         ::limit($limit)
                         ->skip($start)
                         ->where('pemohonId', $user['userable_id'])
-                        ->orWhere('ibuId', $user['userable_id'])
-                        ->orWhere('ayahId', $user['userable_id'])
+                        //->orWhere('ibuId', $user['userable_id'])
+                        //->orWhere('ayahId', $user['userable_id'])
                         ->get();
                 } else if ($user['userable_type'] === 'MorphInstansiKesehatan') {
                     $kelahirans = \App\Kelahiran
