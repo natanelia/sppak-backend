@@ -55,8 +55,8 @@ class Penduduk extends Model
     public static function __generateId($provinsiId, $kotaId, $kecamatanId, $tanggalLahir)
     {
         $birthDate = date_parse($tanggalLahir);
-        $formatTanpaNomorUrut = '%02d%02d%02d%02d%02d%02d';
-        $idStartsWith = sprintf($formatTanpaNomorUrut, $provinsiId, $kotaId, $kecamatanId, $birthDate['day'], $birthDate['month'], substr($birthDate['year'], -2));
+        $formatTanpaNomorUrut = '%06d%02d%02d%02d';
+        $idStartsWith = sprintf($formatTanpaNomorUrut, substr($kecamatanId, 0, 6), $birthDate['day'], $birthDate['month'], substr($birthDate['year'], -2));
 
         $lastPendudukUrut = Penduduk::select('id')->where('id', 'LIKE', "$idStartsWith%")->orderBy('id', 'desc')->first();
         if ($lastPendudukUrut == null) {
