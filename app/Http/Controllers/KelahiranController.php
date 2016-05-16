@@ -431,6 +431,9 @@ class KelahiranController extends Controller
 
                   $kelahiran['status'] = 2;
                   $this->makePenduduk($kelahiran);
+                  
+                  // tambah penduduk di kk
+                  $this->addPendudukOnKK($kelahiran);                  
           }
 
           if (isset($kelahiranData['status'])) {
@@ -576,4 +579,38 @@ class KelahiranController extends Controller
         ];
         $kelahiranPenduduk = \App\KelahiranPenduduk::create($kelahiranPendudukData);
     }
+    
+    public function addPendudukOnKK(\App\Kelahiran $kelahiran){
+		$ktpApiUrl = env('KTP_BASE_API_URL') . '/pengajuan_permohonan_kks/add-anak/';
+		
+		$noKK = $kelahiran['kartuKeluargaId'];
+		$nikAnak = $kelahiran['anakId'];
+		$pemohon = \App\Penduduk::findOrFail($kelahiran['pemohonId']);
+		$pemohonId = $pemohon['id'];
+		
+		// method post to KTP API
+		// taken from http://thisinterestsme.com/sending-json-via-post-php/
+		
+		$data = array(
+			'noKK' => $noKK, 
+			'nikAnak' => $nikAnak,
+			'pemohonId' => $pemohonId
+		);
+		$jsonData = json_encode($data);
+		
+		//Initiate cURL.
+		$ch = curl_init($url);
+ 
+		//Tell cURL that we want to send a POST request.
+		curl_setopt($ch, CURLOPT_POST, 1);
+		 
+		//Attach our encoded JSON string to the POST fields.
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+		 
+		//Set the content type to application/json
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
+		 
+		//Execute the request
+		$result = curl_exec($ch);
+	}
 }
