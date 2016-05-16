@@ -569,6 +569,10 @@ class KelahiranController extends Controller
             'agama' => $ayah['agama'],
             'wni' => true,
             'status_perkawinan' => 'Belum Kawin',
+            'pekerjaan' => '',
+            'pendidikan' => '',
+            'id_izin_tetap' => '',
+            'id_passport' => '',
             'status' => true,
         ];
         $penduduk = \App\Penduduk::create($pendudukData);
