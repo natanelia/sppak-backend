@@ -240,7 +240,7 @@ class KelahiranController extends Controller
                                   'email' => $saksiSatuData['email'],
                                   'token' => Hash::make(str_random(255)),
                               ]);
-                              if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                              if ($kelahiran['status'] == 1 || (isset($kelahiranData['status']) && $kelahiranData['status'] == 1)) {
                                   SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email'], $kelahiran['id']);
                               }
                           } else {
@@ -250,7 +250,7 @@ class KelahiranController extends Controller
                                   $saksiSatu['token'] = Hash::make(str_random(255));
                                   $saksiSatu->save();
                               }
-                              if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                              if ($kelahiran['status'] == 1 || (isset($kelahiranData['status']) && $kelahiranData['status'] == 1)) {
                                   SaksiController::sendVerificationEmail($saksiSatu['id'], $user->userable, $kelahiranData['anak'], $saksiSatuData['email'], $kelahiran['id']);
                               }
                           }
@@ -270,7 +270,7 @@ class KelahiranController extends Controller
                                   'email' => $saksiDuaData['email'],
                                   'token' => Hash::make(str_random(255)),
                               ]);
-                              if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                              if ($kelahiran['status'] == 1 || (isset($kelahiranData['status']) && $kelahiranData['status'] == 1)) {
                                   SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak']['nama'], $saksiDuaData['email'], $kelahiran['id']);
                               }
                           } else {
@@ -280,7 +280,7 @@ class KelahiranController extends Controller
                                   $saksiDua['token'] = Hash::make(str_random(255));
                                   $saksiDua->save();
                               }
-                              if ($kelahiran['status'] == 1 || $kelahiranData['status'] == 1) {
+                              if ($kelahiran['status'] == 1 || (isset($kelahiranData['status']) && $kelahiranData['status'] == 1)) {
                                   SaksiController::sendVerificationEmail($saksiDua['id'], $user->userable, $kelahiranData['anak'], $saksiDuaData['email'], $kelahiran['id']);
                               }
                           }
