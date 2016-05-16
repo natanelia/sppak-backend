@@ -599,7 +599,7 @@ class KelahiranController extends Controller
 		$jsonData = json_encode($data);
 
 		//Initiate cURL.
-		$ch = curl_init($url);
+		$ch = curl_init($ktpApiUrl);
 
 		//Tell cURL that we want to send a POST request.
 		curl_setopt($ch, CURLOPT_POST, 1);
