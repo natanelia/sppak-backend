@@ -18,7 +18,7 @@ class KelahiranController extends Controller
     {
         $this->kelahiran = $kelahiran;
 
-        $this->middleware('auth.basic', ['only' => ['index', 'show', 'store', 'update', 'destroy']]);
+        $this->middleware('auth.basic', ['only' => ['index', 'store', 'update', 'destroy']]);
     }
 
     public function index(Request $request)
@@ -584,22 +584,29 @@ class KelahiranController extends Controller
 		$ktpApiUrl = env('KTP_BASE_API_URL') . '/pengajuan_permohonan_kks/add-anak/';
 
 		$noKK = $kelahiran['kartuKeluargaId'];
-		$nikAnak = $kelahiran['anakId'];
+		$kelahiranPenduduk = $kelahiran->pendudukId;
+		// var_dump($kelahiranPenduduk);
+  		$nikAnak = $kelahiranPenduduk['pendudukId'];
 		$pemohon = \App\Penduduk::findOrFail($kelahiran['pemohonId']);
-		$pemohonId = $pemohon['id'];
+		$pengguna = $pemohon->pengguna;		
+		// $pemohonId = $pemohon['id'];
+                $pemohonEmail = $pengguna['email'];
 
 		// method post to KTP API
 		// taken from http://thisinterestsme.com/sending-json-via-post-php/
 
 		$data = array(
-			'noKK' => $noKK,
-			'nikAnak' => $nikAnak,
-			'pemohonId' => $pemohonId
+			'no_kk' => $noKK,
+			'nik_anak' => $nikAnak,
+			'email_pemohon' => $pemohonEmail
 		);
 		$jsonData = json_encode($data);
+                // var_dump($jsonData);
 
 		//Initiate cURL.
 		$ch = curl_init($ktpApiUrl);
+
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
 		//Tell cURL that we want to send a POST request.
 		curl_setopt($ch, CURLOPT_POST, 1);
