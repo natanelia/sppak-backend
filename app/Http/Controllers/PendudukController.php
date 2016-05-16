@@ -20,7 +20,6 @@ class PendudukController extends Controller
 
     public function index(Request $request)
     {
-        return response()->json(\App\Penduduk::__generateId(0, 1, 3273010, 100395));
         $limit = $request->input('limit') ? $request->input('limit') : 1000;
         $start = $request->input('start') ? $request->input('start') : 0;
         try {
