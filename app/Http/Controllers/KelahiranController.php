@@ -201,7 +201,7 @@ class KelahiranController extends Controller
               'saksiSatu.email' => 'email',
               'saksiDua.pendudukId' => 'numeric',
               'saksiDua.email' => 'email',
-              'pemohonId' => 'required|numeric',
+              'pemohonId' => 'numeric',
               'status' => 'numeric|in:0,1,2,3',
           ]);
 
@@ -363,8 +363,8 @@ class KelahiranController extends Controller
               }
 
               if (isset($kelahiranData['ayahId'])) {
-                if ($kelahiranData['ayahId'] === $saksiSatuData['pendudukId']
-                  || $kelahiranData['ayahId'] === $saksiDuaData['pendudukId']) {
+                if ((isset($saksiSatuData) && $kelahiranData['ayahId'] === $saksiSatuData['pendudukId'])
+                  || (isset($saksiDuaData) && $kelahiranData['ayahId'] === $saksiDuaData['pendudukId'])) {
                     unset($kelahiranData['ayahId']);
                     array_push($errors, "Ayah tidak boleh menjadi saksi.");
                 }
@@ -390,8 +390,8 @@ class KelahiranController extends Controller
               }
 
               if (isset($kelahiranData['ibuId'])) {
-                if ($kelahiranData['ibuId'] === $saksiSatuData['pendudukId']
-                  || $kelahiranData['ibuId'] === $saksiDuaData['pendudukId']) {
+                if ((isset($saksiSatuData) && $kelahiranData['ibuId'] === $saksiSatuData['pendudukId'])
+                  || (isset($saksiDuaData) && $kelahiranData['ibuId'] === $saksiDuaData['pendudukId'])) {
                     unset($kelahiranData['ibuId']);
                     array_push($errors, "Ibu tidak boleh menjadi saksi.");
                 }
@@ -407,6 +407,14 @@ class KelahiranController extends Controller
             }
           }
 
+          if (isset($kelahiranData['kartuKeluargaId'])) {
+            $kkApiUrl = env('KTP_BASE_API_URL') . '/pengajuan_permohonan_kks/is-kk-available/' . $kelahiranData['kartuKeluargaId'];
+            $res = json_decode(file_get_contents($kkApiUrl), true);
+            if (!$res['message']) {
+              array_push($errors, "Kartu Keluarga belum terdaftar.");
+              unset($kelahiranData['kartuKeluargaId']);
+            }
+          }
 
           foreach ($kelahiranData as $key => $value) {
               if ($key != 'status') {
@@ -423,9 +431,7 @@ class KelahiranController extends Controller
 
                   $kelahiran['status'] = 2;
                   $this->makePenduduk($kelahiran);
-
           }
-
 
           if (isset($kelahiranData['status'])) {
               if ($kelahiranData['status'] == 1) {
