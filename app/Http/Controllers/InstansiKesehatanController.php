@@ -13,7 +13,7 @@ class InstansiKesehatanController extends Controller
 
     public function index(Request $request)
     {
-        $limit = $request->input('limit') ? $request->input('limit') : 10;
+        $limit = $request->input('limit') ? $request->input('limit') : 1000;
         $start = $request->input('start') ? $request->input('start') : 0;
         try {
             $statusCode = 200;

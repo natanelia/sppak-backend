@@ -12,7 +12,7 @@ class KotaController extends Controller
     public function index(Request $request)
     {
         $start = $request->input('start') ? $request->input('start') : 0;
-        $limit = $request->input('limit') ? $request->input('limit') : 100;
+        $limit = $request->input('limit') ? $request->input('limit') : 1000;
 
         $daftarKota = Kota::limit($limit)->skip($start)->get();
         foreach ($daftarKota as $kota) {

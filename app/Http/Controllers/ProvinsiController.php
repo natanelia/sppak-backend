@@ -12,7 +12,7 @@ class ProvinsiController extends Controller
     public function index(Request $request)
     {
         $start = $request->input('start') ? $request->input('start') : 0;
-        $limit = $request->input('limit') ? $request->input('limit') : 100;
+        $limit = $request->input('limit') ? $request->input('limit') : 1000;
 
         $daftarProvinsi = Provinsi::limit($limit)->skip($start)->get();
         foreach ($daftarProvinsi as $provinsi) {
